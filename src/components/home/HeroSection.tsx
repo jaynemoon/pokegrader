@@ -21,11 +21,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         </div>
         
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-          Grade your{' '}
           <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">
-            Pokemon cards
-          </span>{' '}
-          instantly
+             Get Pokémon cards
+          </span>
         </h1>
         
         <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
