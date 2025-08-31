@@ -48,6 +48,7 @@ const AnalysisPage: React.FC<AnalysisPageProps> = ({
             isAnalyzing={isAnalyzing}
             gradeResults={gradeResults}
             analyzeCard={analyzeCard}
+            user={user}
           />
           
           <GradeResults

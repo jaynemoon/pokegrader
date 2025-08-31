@@ -3,6 +3,9 @@ export interface User {
   email: string;
   name: string;
   avatar: string;
+  isPro: boolean;
+  freeAnalysesRemaining: number;
+  subscriptionExpiresAt?: string;
 }
 
 export interface AuthForm {
@@ -44,5 +47,5 @@ export interface SavedCard extends GradeResults {
   userId: number;
 }
 
-export type ViewType = 'home' | 'analysis' | 'collection' | 'auth';
+export type ViewType = 'home' | 'analysis' | 'collection' | 'auth' | 'upgrade';
 export type AuthMode = 'signin' | 'signup';

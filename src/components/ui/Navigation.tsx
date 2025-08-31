@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, History } from 'lucide-react';
+import { Sparkles, History, Crown } from 'lucide-react';
 import type { User, SavedCard, ViewType } from '../../types';
 
 interface NavigationProps {
@@ -37,6 +37,17 @@ const Navigation: React.FC<NavigationProps> = ({
                 Collection ({savedCards.length})
               </button>
             )}
+            
+            {user && !user.isPro && (
+              <button
+                onClick={() => setCurrentView('upgrade')}
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+              >
+                <Crown className="w-4 h-4" />
+                Upgrade to Pro
+              </button>
+            )}
+            
             {user ? (
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-2">
@@ -45,7 +56,19 @@ const Navigation: React.FC<NavigationProps> = ({
                     alt="Avatar"
                     className="w-8 h-8 rounded-full"
                   />
-                  <span className="text-sm font-medium text-slate-700">{user.name}</span>
+                  <div className="flex flex-col">
+                    <div className="flex items-center gap-1">
+                      <span className="text-sm font-medium text-slate-700">{user.name}</span>
+                      {user.isPro && (
+                        <Crown className="w-3 h-3 text-yellow-500" />
+                      )}
+                    </div>
+                    {!user.isPro && (
+                      <span className="text-xs text-slate-500">
+                        {user.freeAnalysesRemaining} free analyses left
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <button
                   onClick={handleSignOut}

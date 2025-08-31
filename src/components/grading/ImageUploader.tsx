@@ -9,13 +9,15 @@ interface ImageUploaderProps {
   isAnalyzing: boolean;
   gradeResults: GradeResults | null;
   analyzeCard: () => Promise<void>;
+  user?: { isPro: boolean; freeAnalysesRemaining: number } | null;
 }
 
 const ImageUploader: React.FC<ImageUploaderProps> = ({
   uploadedImage,
   isAnalyzing,
   gradeResults,
-  analyzeCard
+  analyzeCard,
+  user
 }) => {
   const handleRetakePhoto = () => {
     window.location.reload(); // Simple way to reset the analysis
@@ -54,10 +56,23 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
                   onClick={analyzeCard}
                   size="lg"
                   className="w-full"
+                  disabled={!!(user && !user.isPro && user.freeAnalysesRemaining <= 0)}
                 >
                   <Upload className="w-5 h-5 mr-2" />
                   Analyze Card
+                  {user && !user.isPro && ` (${user.freeAnalysesRemaining} left)`}
                 </Button>
+                
+                {user && !user.isPro && user.freeAnalysesRemaining <= 0 && (
+                  <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
+                    <p className="text-sm text-blue-800 font-medium mb-1">
+                      Free analyses limit reached
+                    </p>
+                    <p className="text-xs text-blue-600">
+                      Upgrade to Pro for unlimited card analyses
+                    </p>
+                  </div>
+                )}
                 <Button 
                   variant="outline"
                   onClick={handleRetakePhoto}

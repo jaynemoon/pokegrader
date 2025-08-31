@@ -1,7 +1,11 @@
 import React from 'react';
 import { CheckCircle, Shield } from 'lucide-react';
 
-const PricingSection: React.FC = () => {
+interface PricingSectionProps {
+  onUpgradeClick?: () => void;
+}
+
+const PricingSection: React.FC<PricingSectionProps> = ({ onUpgradeClick }) => {
   return (
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -86,7 +90,10 @@ const PricingSection: React.FC = () => {
               </li>
             </ul>
 
-            <button className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-3 rounded-2xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
+            <button 
+              onClick={onUpgradeClick}
+              className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-3 rounded-2xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+            >
               Upgrade to Pro
             </button>
             

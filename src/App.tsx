@@ -4,6 +4,7 @@ import HomePage from './components/home/HomePage';
 import AnalysisPage from './components/grading/AnalysisPage';
 import CollectionPage from './components/collection/CollectionPage';
 import AuthPage from './components/auth/AuthPage';
+import UpgradePage from './components/upgrade/UpgradePage';
 import { generateMockPriceData } from './utils/mockData';
 
 const App: React.FC = () => {
@@ -21,7 +22,19 @@ const App: React.FC = () => {
 
   // Simulate AI grading analysis
   const analyzeCard = async () => {
+    // Check if user can analyze (Pro or has free analyses remaining)
+    if (user && !user.isPro && user.freeAnalysesRemaining <= 0) {
+      alert('You\'ve reached your free analysis limit. Upgrade to Pro for unlimited analyses!');
+      setCurrentView('upgrade');
+      return;
+    }
+
     setIsAnalyzing(true);
+
+    // Consume a free analysis if user is not Pro
+    if (user && !user.isPro) {
+      setUser({ ...user, freeAnalysesRemaining: user.freeAnalysesRemaining - 1 });
+    }
     
     await new Promise(resolve => setTimeout(resolve, 3000));
     
@@ -75,7 +88,10 @@ const App: React.FC = () => {
       id: Date.now(),
       email: authForm.email,
       name: authMode === 'signup' ? authForm.name : authForm.email.split('@')[0],
-      avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${authForm.email}`
+      avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${authForm.email}`,
+      isPro: authForm.email === 'demo@pokegrade.ai', // Demo user gets Pro
+      freeAnalysesRemaining: 5,
+      subscriptionExpiresAt: authForm.email === 'demo@pokegrade.ai' ? '2025-12-31' : undefined
     };
     
     setUser(mockUser);
@@ -135,6 +151,17 @@ const App: React.FC = () => {
     setCurrentView('home');
   };
 
+  const handleUpgrade = () => {
+    if (user) {
+      setUser({
+        ...user,
+        isPro: true,
+        subscriptionExpiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString() // 30 days from now
+      });
+      alert('🎉 Welcome to Pro! You now have unlimited card analyses.');
+    }
+  };
+
   const appProps = {
     currentView,
     setCurrentView,
@@ -155,7 +182,8 @@ const App: React.FC = () => {
     handleAuth,
     handleSignOut,
     saveCard,
-    resetAnalysis
+    resetAnalysis,
+    onUpgrade: handleUpgrade
   };
 
   switch (currentView) {
@@ -167,6 +195,8 @@ const App: React.FC = () => {
       return <CollectionPage {...appProps} />;
     case 'auth':
       return <AuthPage {...appProps} />;
+    case 'upgrade':
+      return <UpgradePage {...appProps} />;
     default:
       return <HomePage {...appProps} />;
   }
