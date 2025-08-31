@@ -81,13 +81,25 @@ const Navigation: React.FC<NavigationProps> = ({
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => setCurrentView('home')}
-                  className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-xl text-sm font-medium transition-colors"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors"
                 >
-                  Get Started
+                  Features
+                </button>
+                <button
+                  onClick={() => setCurrentView('home')}
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors"
+                >
+                  Pricing
+                </button>
+                               <button
+                  onClick={() => setCurrentView('home')}
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors"
+                >
+                  Mobile App
                 </button>
                 <button
                   onClick={() => setCurrentView('auth')}
-                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors"
+                  className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-xl text-sm font-medium transition-colors"
                 >
                   Sign In
                 </button>

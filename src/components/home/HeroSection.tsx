@@ -37,14 +37,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             className="inline-flex items-center gap-3 bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-200 shadow-lg shadow-slate-900/25 hover:shadow-xl hover:shadow-slate-900/40 hover:scale-105"
           >
             <Camera className="w-5 h-5" />
-            Take Photo
+            Get Started
           </button>
           <button
             onClick={() => fileInputRef.current?.click()}
             className="inline-flex items-center gap-3 bg-white hover:bg-slate-50 text-slate-900 px-8 py-4 rounded-2xl font-semibold text-lg border border-slate-200 transition-all duration-200 shadow-lg shadow-slate-900/5 hover:shadow-xl hover:shadow-slate-900/10 hover:scale-105"
           >
             <Upload className="w-5 h-5" />
-            Upload Image
+            Get Started
           </button>
         </div>
 
@@ -81,6 +81,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         onChange={handleFileUpload}
         className="hidden"
       />
+
+      
     </section>
   );
 };
