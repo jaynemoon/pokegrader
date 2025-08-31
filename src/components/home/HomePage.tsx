@@ -4,15 +4,15 @@ import HeroSection from './HeroSection';
 import FeaturesSection from './FeaturesSection';
 import PricingSection from './PricingSection';
 import Footer from './Footer';
-import { HomePageProps } from '../../types';
+import type { User, SavedCard, ViewType } from '../../types';
 
 interface HomePageProps {
-  user: any;
-  savedCards: any[];
-  setCurrentView: (view: string) => void;
+  user: User | null;
+  savedCards: SavedCard[];
+  setCurrentView: (view: ViewType) => void;
   handleSignOut: () => void;
-  fileInputRef: React.RefObject<HTMLInputElement>;
-  cameraInputRef: React.RefObject<HTMLInputElement>;
+  fileInputRef: React.RefObject<HTMLInputElement | null>;
+  cameraInputRef: React.RefObject<HTMLInputElement | null>;
   handleFileUpload: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import Navigation from '../ui/Navigation';
 import ImageUploader from './ImageUploader';
 import GradeResults from './GradeResults';
-import { GradeResults as GradeResultsType, User, SavedCard } from '../../types';
+import type { GradeResults as GradeResultsType, User, SavedCard, ViewType } from '../../types';
 
 interface AnalysisPageProps {
   user: User | null;
@@ -10,11 +10,10 @@ interface AnalysisPageProps {
   uploadedImage: string | null;
   gradeResults: GradeResultsType | null;
   isAnalyzing: boolean;
-  setCurrentView: (view: string) => void;
+  setCurrentView: (view: ViewType) => void;
   handleSignOut: () => void;
   analyzeCard: () => Promise<void>;
   saveCard: () => void;
-  resetAnalysis: () => void;
 }
 
 const AnalysisPage: React.FC<AnalysisPageProps> = ({
@@ -26,8 +25,7 @@ const AnalysisPage: React.FC<AnalysisPageProps> = ({
   setCurrentView,
   handleSignOut,
   analyzeCard,
-  saveCard,
-  resetAnalysis
+  saveCard
 }) => {
   return (
     <div className="min-h-screen bg-slate-50">

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Sparkles, History } from 'lucide-react';
-import { User, SavedCard } from '../../types';
+import type { User, SavedCard, ViewType } from '../../types';
 
 interface NavigationProps {
   user: User | null;
   savedCards: SavedCard[];
-  setCurrentView: (view: string) => void;
+  setCurrentView: (view: ViewType) => void;
   handleSignOut: () => void;
 }
 

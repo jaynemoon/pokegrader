@@ -2,8 +2,8 @@ import React from 'react';
 import { Camera, Upload, Zap } from 'lucide-react';
 
 interface HeroSectionProps {
-  fileInputRef: React.RefObject<HTMLInputElement>;
-  cameraInputRef: React.RefObject<HTMLInputElement>;
+  fileInputRef: React.RefObject<HTMLInputElement | null>;
+  cameraInputRef: React.RefObject<HTMLInputElement | null>;
   handleFileUpload: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 

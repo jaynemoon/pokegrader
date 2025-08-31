@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { ViewType, User, SavedCard, GradeResults, AuthForm, AuthMode } from './types';
+import type { ViewType, User, SavedCard, GradeResults, AuthForm, AuthMode } from './types';
 import HomePage from './components/home/HomePage';
 import AnalysisPage from './components/grading/AnalysisPage';
 import CollectionPage from './components/collection/CollectionPage';

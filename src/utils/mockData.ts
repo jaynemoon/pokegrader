@@ -1,4 +1,4 @@
-import { PriceHistoryPoint } from '../types';
+import type { PriceHistoryPoint } from '../types';
 
 export const generateMockPriceData = (basePrice: number): PriceHistoryPoint[] => {
   const data: PriceHistoryPoint[] = [];
