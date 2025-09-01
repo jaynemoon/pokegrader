@@ -366,14 +366,22 @@ const FeaturesSection: React.FC = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="group relative bg-white rounded-3xl p-8 shadow-sm border border-slate-200/50 hover:shadow-lg hover:shadow-slate-900/5 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+              className="group relative bg-white rounded-3xl p-8 shadow-sm hover:shadow-lg hover:shadow-slate-900/5 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+              style={{
+                border: `3px solid transparent`,
+                backgroundImage: `linear-gradient(white, white), linear-gradient(135deg, var(--tw-gradient-stops))`,
+                backgroundOrigin: 'border-box',
+                backgroundClip: 'padding-box, border-box',
+                '--tw-gradient-from': feature.color.includes('blue') ? '#3b82f6' : 
+                                     feature.color.includes('emerald') ? '#10b981' : '#8b5cf6',
+                '--tw-gradient-to': feature.color.includes('cyan') ? '#06b6d4' :
+                                   feature.color.includes('teal') ? '#14b8a6' : '#a855f7',
+                '--tw-gradient-stops': 'var(--tw-gradient-from), var(--tw-gradient-to)'
+              } as React.CSSProperties}
             >
               {/* Visualization */}
               <feature.visualization />
               
-              <div className={`w-12 h-12 bg-gradient-to-br ${feature.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                <feature.icon className="w-6 h-6 text-white" />
-              </div>
               <h3 className="text-xl font-bold text-slate-900 mb-4">{feature.title}</h3>
               <p className="text-slate-600 leading-relaxed mb-4">
                 {feature.description}
@@ -381,11 +389,6 @@ const FeaturesSection: React.FC = () => {
               <div className={`flex items-center gap-2 text-sm ${feature.badgeColor} font-medium`}>
                 <CheckCircle className="w-4 h-4" />
                 {feature.badge}
-              </div>
-              
-              {/* Subtle background animation */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500">
-                <div className={`w-full h-full bg-gradient-to-br ${feature.color}`} />
               </div>
             </div>
           ))}
