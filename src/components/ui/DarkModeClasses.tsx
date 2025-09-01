@@ -18,6 +18,11 @@ export const DarkModeClasses = () => {
       <div className="dark:shadow-slate-100/5 dark:hover:shadow-slate-100/10"></div>
       <div className="dark:bg-amber-900/30"></div>
       <div className="dark:from-slate-100 dark:to-slate-300"></div>
+      {/* Newsletter and Pricing Section Classes */}
+      <div className="dark:bg-slate-800/60 dark:border-blue-800 dark:border-blue-700"></div>
+      <div className="dark:from-blue-900/20 dark:via-slate-900 dark:to-cyan-900/20"></div>
+      <div className="dark:from-blue-800/20 dark:to-cyan-800/20 dark:from-purple-800/10 dark:to-blue-800/10"></div>
+      <div className="dark:bg-blue-900/30 dark:from-slate-700 dark:to-slate-600"></div>
     </div>
   );
 };
