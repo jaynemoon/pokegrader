@@ -3,7 +3,7 @@ import Navigation from '../ui/Navigation';
 import DottedBackground from '../ui/DottedBackground';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
-import type { User, SavedCard, ViewType, PriceAlert, MarketTrend, RecentSale } from '../../types';
+import type { User, SavedCard, ViewType, PriceAlert, MarketTrend } from '../../types';
 
 interface MarketPageProps {
   user: User | null;
@@ -22,7 +22,7 @@ const MarketPage: React.FC<MarketPageProps> = ({
   priceAlerts,
   setPriceAlerts
 }) => {
-  const [activeTab, setActiveTab] = useState<'trends' | 'alerts' | 'investment' | 'sales'>('trends');
+  const [activeTab, setActiveTab] = useState<'trends' | 'alerts' | 'investment'>('trends');
 
   // Expanded mock market trends data
   const marketTrends: MarketTrend[] = [
@@ -218,13 +218,6 @@ const MarketPage: React.FC<MarketPageProps> = ({
     }
   ];
 
-  const recentSales: RecentSale[] = [
-    { cardName: 'Charizard Base Set', grade: 9, price: 1200, date: '2024-01-15', platform: 'eBay' },
-    { cardName: 'Pikachu VMAX', grade: 10, price: 520, date: '2024-01-14', platform: 'Heritage' },
-    { cardName: 'Blastoise Base Set', grade: 8, price: 750, date: '2024-01-14', platform: 'PWCC' },
-    { cardName: 'Venusaur Base Set', grade: 9, price: 680, date: '2024-01-13', platform: 'eBay' },
-    { cardName: 'Alakazam Base Set', grade: 10, price: 450, date: '2024-01-13', platform: 'Heritage' }
-  ];
 
   const addPriceAlert = () => {
     const cardName = prompt('Enter card name:');
@@ -286,10 +279,9 @@ const MarketPage: React.FC<MarketPageProps> = ({
         {/* Tab Navigation */}
         <div className="flex space-x-1 mb-8 bg-slate-200 p-1 rounded-lg w-fit">
           {[
-            { id: 'trends', label: 'Market Trends' },
-            { id: 'alerts', label: 'Price Alerts' },
-            { id: 'investment', label: 'Marketplace Prices' },
-            { id: 'sales', label: 'Recent Sales' }
+            { id: 'trends', label: 'Prices' },
+            { id: 'alerts', label: 'Alerts' },
+            { id: 'investment', label: 'Marketplaces' }
           ].map((tab) => (
             <button
               key={tab.id}
@@ -673,30 +665,6 @@ const MarketPage: React.FC<MarketPageProps> = ({
           </div>
         )}
 
-        {/* Recent Sales Tab */}
-        {activeTab === 'sales' && (
-          <Card>
-            <div className="p-6">
-              <h3 className="text-lg font-semibold text-slate-900 mb-4">Recent Sales</h3>
-              <div className="space-y-4">
-                {recentSales.map((sale, index) => (
-                  <div key={index} className="border-b border-slate-100 pb-4 last:border-b-0">
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <h4 className="font-medium text-slate-900">{sale.cardName}</h4>
-                        <p className="text-sm text-slate-600">Grade {sale.grade} • {sale.platform}</p>
-                      </div>
-                      <div className="text-right">
-                        <p className="font-semibold text-green-600">${sale.price}</p>
-                        <p className="text-xs text-slate-500">{sale.date}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Card>
-        )}
       </div>
     </div>
   );
