@@ -3,6 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 import Card from '../ui/Card';
+import DottedBackground from '../ui/DottedBackground';
 import type { ViewType, AuthForm, AuthMode } from '../../types';
 
 interface AuthPageProps {
@@ -29,7 +30,8 @@ const AuthPage: React.FC<AuthPageProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative">
+      <DottedBackground opacity={0.02} />
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         {/* Back button */}
         <button

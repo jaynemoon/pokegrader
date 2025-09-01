@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Plus } from 'lucide-react';
 import Navigation from '../ui/Navigation';
+import DottedBackground from '../ui/DottedBackground';
 import CollectionStats from './CollectionStats';
 import CollectionAnalytics from './CollectionAnalytics';
 import CollectionFilterComponent from './CollectionFilter';
@@ -114,7 +115,9 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 relative">
+      <DottedBackground opacity={0.02} />
+      
       <Navigation
         user={user}
         savedCards={savedCards}

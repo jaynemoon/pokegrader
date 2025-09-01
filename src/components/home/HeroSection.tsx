@@ -1,5 +1,6 @@
 import React from 'react';
-import { Camera, Upload, Zap } from 'lucide-react';
+import { Camera, Upload, Zap, RefreshCw } from 'lucide-react';
+import { usePokemonCards } from '../../hooks/usePokemonCards';
 
 interface HeroSectionProps {
   fileInputRef: React.RefObject<HTMLInputElement | null>;
@@ -12,6 +13,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   cameraInputRef,
   handleFileUpload
 }) => {
+  const { cards, loading, error, refreshCards } = usePokemonCards(4);
   return (
     <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <div className="text-center max-w-4xl mx-auto">
@@ -49,7 +51,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto mb-16">
           <div className="text-center">
             <div className="text-3xl font-bold text-slate-900 mb-1">&lt; 5s</div>
             <div className="text-slate-600">Grading time</div>
@@ -61,6 +63,79 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           <div className="text-center">
             <div className="text-3xl font-bold text-slate-900 mb-1">$0</div>
             <div className="text-slate-600">Grading fees</div>
+          </div>
+        </div>
+
+        {/* Random Pokemon Cards Section */}
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <h3 className="text-xl font-semibold text-slate-900">Recently Graded Cards</h3>
+            <button
+              onClick={refreshCards}
+              disabled={loading}
+              className="p-2 hover:bg-slate-100 rounded-full transition-colors disabled:opacity-50"
+              title="Refresh cards"
+            >
+              <RefreshCw className={`w-4 h-4 text-slate-600 ${loading ? 'animate-spin' : ''}`} />
+            </button>
+          </div>
+
+          {error && (
+            <div className="mb-4 text-center">
+              <span className="text-xs text-amber-600 bg-amber-50 px-2 py-1 rounded-full">
+                {error}
+              </span>
+            </div>
+          )}
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {loading ? (
+              // Loading skeletons
+              Array.from({ length: 4 }).map((_, idx) => (
+                <div key={idx} className="bg-slate-100 rounded-xl aspect-[245/342] animate-pulse" />
+              ))
+            ) : (
+              cards.map((card) => (
+                <div
+                  key={card.id}
+                  className="group relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+                >
+                  <div className="aspect-[245/342] overflow-hidden">
+                    <img
+                      src={card.images.small}
+                      alt={card.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                      onError={(e) => {
+                        // Fallback to placeholder if image fails to load
+                        const target = e.target as HTMLImageElement;
+                        target.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='245' height='342' fill='%23E5E7EB'%3E%3Crect width='245' height='342' rx='12' fill='%23F3F4F6'/%3E%3Ctext x='122' y='180' text-anchor='middle' fill='%23374151' font-size='14' font-weight='bold'%3E${card.name}%3C/text%3E%3C/svg%3E`;
+                      }}
+                    />
+                  </div>
+                  
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-0 left-0 right-0 p-3 text-white">
+                      <div className="font-semibold text-sm truncate">{card.name}</div>
+                      <div className="text-xs opacity-90 truncate">{card.set.name}</div>
+                      {card.rarity && (
+                        <div className="text-xs opacity-75 mt-1">
+                          <span className="bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
+                            {card.rarity}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+
+          <div className="text-center mt-6">
+            <p className="text-sm text-slate-500">
+              Live Pokemon TCG cards • Updated every refresh
+            </p>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Navigation from '../ui/Navigation';
+import DottedBackground from '../ui/DottedBackground';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 import type { User, SavedCard, ViewType, PriceAlert, MarketTrend, InvestmentData, RecentSale } from '../../types';
@@ -111,7 +112,9 @@ const MarketPage: React.FC<MarketPageProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 relative">
+      <DottedBackground opacity={0.02} />
+      
       <Navigation
         user={user}
         savedCards={savedCards}

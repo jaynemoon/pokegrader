@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Navigation from '../ui/Navigation';
+import DottedBackground from '../ui/DottedBackground';
 import ImageUploader from './ImageUploader';
 import GradeResults from './GradeResults';
 import ARPreview from '../mobile/ARPreview';
@@ -38,7 +39,9 @@ const AnalysisPage: React.FC<AnalysisPageProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<'upload' | 'ar'>('upload');
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 relative">
+      <DottedBackground opacity={0.02} />
+      
       <Navigation
         user={user}
         savedCards={savedCards}

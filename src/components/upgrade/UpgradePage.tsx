@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Crown, Star, Zap, Shield, Download, Headphones } from 'lucide-react';
 import Navigation from '../ui/Navigation';
+import DottedBackground from '../ui/DottedBackground';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
 import type { ViewType, User, SavedCard } from '../../types';
@@ -77,7 +78,9 @@ const UpgradePage: React.FC<UpgradePageProps> = ({
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 relative">
+      <DottedBackground opacity={0.02} />
+      
       <Navigation
         user={user}
         savedCards={savedCards}

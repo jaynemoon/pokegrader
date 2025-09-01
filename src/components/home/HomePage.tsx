@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from '../ui/Navigation';
+import DottedBackground from '../ui/DottedBackground';
 import HeroSection from './HeroSection';
 import FeaturesSection from './FeaturesSection';
 import PricingSection from './PricingSection';
@@ -27,7 +28,9 @@ const HomePage: React.FC<HomePageProps> = ({
   handleFileUpload
 }) => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white relative">
+      <DottedBackground opacity={0.03} />
+      
       <Navigation
         user={user}
         savedCards={savedCards}
