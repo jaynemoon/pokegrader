@@ -1,6 +1,7 @@
 import React from 'react';
 import { Sparkles, History, Crown } from 'lucide-react';
 import type { User, SavedCard, ViewType } from '../../types';
+// import { masterballIcon } from '/src/masterball.svg';
 
 interface NavigationProps {
   user: User | null;
@@ -22,9 +23,14 @@ const Navigation: React.FC<NavigationProps> = ({
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-lg flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-white" />
+              {/* <img
+                src={masterballIcon}
+                alt="site icon"
+                className="w-5 h-5"
+                  /> */}
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
-              PokeGrade AI
+              PokéGrader
             </span>
           </div>
           <div className="flex items-center gap-3">

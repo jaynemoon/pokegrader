@@ -46,8 +46,8 @@ const AuthPage: React.FC<AuthPageProps> = ({
           </h2>
           <p className="text-slate-600 mt-2">
             {authMode === 'signin' 
-              ? 'Welcome back to PokeGrade AI' 
-              : 'Create your PokeGrade AI account'
+              ? 'Welcome back to PokéGrader' 
+              : 'Create your PokéGrader account'
             }
           </p>
         </div>
@@ -118,9 +118,9 @@ const AuthPage: React.FC<AuthPageProps> = ({
 
           {/* Demo account info */}
           <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <h4 className="text-sm font-medium text-blue-900 mb-2">Demo Account</h4>
+            <h4 className="text-sm font-medium text-blue-900 mb-2">Trainer Account</h4>
             <p className="text-sm text-blue-700 mb-2">
-              Try the app with our demo account:
+              Try the app with our trainer account:
             </p>
             <div className="text-sm text-blue-600 space-y-1">
               <div>Email: demo@pokegrade.ai</div>

@@ -1,5 +1,5 @@
 
-/* // Pokemon card API */
+/* // Pokémon API */
 
 // Fetch random Pokemon card on component mount
 // Generate a random card ID (Pokemon TCG has various formats)
