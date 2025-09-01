@@ -28,7 +28,7 @@ const HomePage: React.FC<HomePageProps> = ({
   handleFileUpload
 }) => {
   return (
-    <div className="min-h-screen bg-white relative">
+    <div className="min-h-screen bg-white dark:bg-slate-900 relative transition-colors">
       <DottedBackground opacity={0.03} />
       
       <Navigation

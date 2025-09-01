@@ -138,7 +138,7 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-slate-50">
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors">
         <Navigation
           user={user}
           savedCards={savedCards}
@@ -166,7 +166,7 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 relative">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 relative transition-colors">
       <DottedBackground opacity={0.02} />
       
       <Navigation

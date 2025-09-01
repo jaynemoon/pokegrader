@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { History, Crown, Heart, TrendingUp, Scan, Menu, X } from 'lucide-react';
 import masterballIcon from '../../assets/masterball.svg';
+import ThemeToggle from './ThemeToggle';
 import type { User, SavedCard, ViewType } from '../../types';
 
 interface NavigationProps {
@@ -20,31 +21,32 @@ const Navigation: React.FC<NavigationProps> = ({
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/50">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <button 
             onClick={() => setCurrentView('home')}
             className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 hover:border-purple-800 hover:shadow-xlg rounded-lg border-radius-lg flex items-center justify-center">
               <img
                 src={masterballIcon}
-                alt="PokéGrader"
-                className="w-5 h-5"
+                alt="PokéGrader-icon"
+                className="w-8 h-8"
               />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+            <span className="text-xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 dark:from-slate-100 dark:to-slate-300 bg-clip-text text-transparent">
               PokéGrader
             </span>
           </button>
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-3">
+            <ThemeToggle />
             {user && (
               <>
                 <button
                   onClick={() => setCurrentView('collection')}
-                  className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors border border-slate-200 rounded-xl hover:border-slate-300"
+                  className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-700 rounded-xl hover:border-slate-300 dark:hover:border-slate-600"
                 >
                   <History className="w-4 h-4" />
                   Collection ({savedCards.length})
@@ -52,7 +54,7 @@ const Navigation: React.FC<NavigationProps> = ({
                 
                 <button
                   onClick={() => setCurrentView('wishlist')}
-                  className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors border border-slate-200 rounded-xl hover:border-slate-300"
+                  className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-700 rounded-xl hover:border-slate-300 dark:hover:border-slate-600"
                 >
                   <Heart className="w-4 h-4" />
                   Wishlist
@@ -60,7 +62,7 @@ const Navigation: React.FC<NavigationProps> = ({
                 
                 <button
                   onClick={() => setCurrentView('market')}
-                  className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors border border-slate-200 rounded-xl hover:border-slate-300"
+                  className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-700 rounded-xl hover:border-slate-300 dark:hover:border-slate-600"
                 >
                   <TrendingUp className="w-4 h-4" />
                   Market
@@ -69,7 +71,7 @@ const Navigation: React.FC<NavigationProps> = ({
                 {setShowBarcodeScanner && (
                   <button
                     onClick={() => setShowBarcodeScanner(true)}
-                    className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors border border-slate-200 rounded-xl hover:border-slate-300"
+                    className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-700 rounded-xl hover:border-slate-300 dark:hover:border-slate-600"
                   >
                     <Scan className="w-4 h-4" />
                     Scan
@@ -98,13 +100,13 @@ const Navigation: React.FC<NavigationProps> = ({
                   />
                   <div className="flex flex-col">
                     <div className="flex items-center gap-1">
-                      <span className="text-sm font-medium text-slate-700">{user.name}</span>
+                      <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{user.name}</span>
                       {user.isPro && (
                         <Crown className="w-3 h-3 text-yellow-500" />
                       )}
                     </div>
                     {!user.isPro && (
-                      <span className="text-xs text-slate-500">
+                      <span className="text-xs text-slate-500 dark:text-slate-400">
                         {user.freeAnalysesRemaining} free analyses left
                       </span>
                     )}
@@ -112,7 +114,7 @@ const Navigation: React.FC<NavigationProps> = ({
                 </div>
                 <button
                   onClick={handleSignOut}
-                  className="text-sm text-slate-600 hover:text-slate-800 transition-colors"
+                  className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors"
                 >
                   Sign Out
                 </button>
@@ -120,7 +122,7 @@ const Navigation: React.FC<NavigationProps> = ({
             ) : (
               <button
                 onClick={() => setCurrentView('auth')}
-                className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-xl text-sm font-medium transition-colors"
+                className="inline-flex items-center gap-2 bg-slate-900 dark:bg-slate-700 hover:bg-slate-800 dark:hover:bg-slate-600 text-white px-4 py-2 rounded-xl text-sm font-medium transition-colors"
               >
                 Sign In
               </button>
@@ -129,9 +131,10 @@ const Navigation: React.FC<NavigationProps> = ({
           
           {/* Mobile Menu Button */}
           <div className="md:hidden">
+            <ThemeToggle />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-slate-600 hover:text-slate-900"
+              className="p-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 ml-2"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -140,13 +143,13 @@ const Navigation: React.FC<NavigationProps> = ({
         
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-slate-200 bg-white">
+          <div className="md:hidden border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {user ? (
                 <>
                   <button
                     onClick={() => { setCurrentView('collection'); setIsMobileMenuOpen(false); }}
-                    className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg"
+                    className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg"
                   >
                     <History className="w-4 h-4" />
                     Collection ({savedCards.length})
@@ -154,7 +157,7 @@ const Navigation: React.FC<NavigationProps> = ({
                   
                   <button
                     onClick={() => { setCurrentView('wishlist'); setIsMobileMenuOpen(false); }}
-                    className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg"
+                    className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg"
                   >
                     <Heart className="w-4 h-4" />
                     Wishlist
@@ -162,7 +165,7 @@ const Navigation: React.FC<NavigationProps> = ({
                   
                   <button
                     onClick={() => { setCurrentView('market'); setIsMobileMenuOpen(false); }}
-                    className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg"
+                    className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg"
                   >
                     <TrendingUp className="w-4 h-4" />
                     Market
@@ -171,7 +174,7 @@ const Navigation: React.FC<NavigationProps> = ({
                   {setShowBarcodeScanner && (
                     <button
                       onClick={() => { setShowBarcodeScanner(true); setIsMobileMenuOpen(false); }}
-                      className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg"
+                      className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg"
                     >
                       <Scan className="w-4 h-4" />
                       Barcode Scanner
@@ -191,7 +194,7 @@ const Navigation: React.FC<NavigationProps> = ({
               ) : (
                 <button
                   onClick={() => { setCurrentView('auth'); setIsMobileMenuOpen(false); }}
-                  className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium bg-slate-900 text-white rounded-lg"
+                  className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium bg-slate-900 dark:bg-slate-700 text-white rounded-lg"
                 >
                   Sign In
                 </button>

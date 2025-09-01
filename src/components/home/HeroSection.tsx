@@ -17,18 +17,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <div className="text-center max-w-4xl mx-auto">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-200/50 text-blue-700 text-sm font-medium mb-6">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-900/30 border border-blue-200/50 dark:border-blue-700/50 text-blue-700 dark:text-blue-300 text-sm font-medium mb-6">
           <Zap className="w-4 h-4" />
           Instant AI-Powered Grading
         </div>
         
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-          <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 dark:from-blue-400 dark:via-purple-400 dark:to-cyan-400 bg-clip-text text-transparent">
              Get Pokémon cards
           </span>
         </h1>
         
-        <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed">
           Skip the months-long wait and expensive fees. Get professional PSA-style grading results in seconds using advanced AI analysis.
         </p>
 
@@ -36,14 +36,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
           <button
             onClick={() => cameraInputRef.current?.click()}
-            className="inline-flex items-center gap-3 bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-200 shadow-lg shadow-slate-900/25 hover:shadow-xl hover:shadow-slate-900/40 hover:scale-105"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-blue-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-200 shadow-lg shadow-blue-600/25 dark:shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-600/40 dark:hover:shadow-blue-500/40 hover:scale-105"
           >
             <Camera className="w-5 h-5" />
             Get Started
           </button>
           <button
             onClick={() => fileInputRef.current?.click()}
-            className="inline-flex items-center gap-3 bg-white hover:bg-slate-50 text-slate-900 px-8 py-4 rounded-2xl font-semibold text-lg border border-slate-200 transition-all duration-200 shadow-lg shadow-slate-900/5 hover:shadow-xl hover:shadow-slate-900/10 hover:scale-105"
+            className="inline-flex items-center gap-3 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-900 dark:text-white px-8 py-4 rounded-2xl font-semibold text-lg border border-slate-200 dark:border-slate-600 transition-all duration-200 shadow-lg shadow-slate-900/5 dark:shadow-slate-100/5 hover:shadow-xl hover:shadow-slate-900/10 dark:hover:shadow-slate-100/10 hover:scale-105"
           >
             <Upload className="w-5 h-5" />
             Get Started
@@ -53,36 +53,36 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         {/* Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto mb-16">
           <div className="text-center">
-            <div className="text-3xl font-bold text-slate-900 mb-1">&lt; 5s</div>
-            <div className="text-slate-600">Grading time</div>
+            <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">&lt; 5s</div>
+            <div className="text-slate-600 dark:text-slate-400">Grading time</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-slate-900 mb-1">95%</div>
-            <div className="text-slate-600">Accuracy rate</div>
+            <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">95%</div>
+            <div className="text-slate-600 dark:text-slate-400">Accuracy rate</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-slate-900 mb-1">$0</div>
-            <div className="text-slate-600">Grading fees</div>
+            <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">$0</div>
+            <div className="text-slate-600 dark:text-slate-400">Grading fees</div>
           </div>
         </div>
 
         {/* Random Pokemon Cards Section */}
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center justify-center gap-3 mb-8">
-            <h3 className="text-xl font-semibold text-slate-900">Recently Graded Cards</h3>
+            <h3 className="text-xl font-semibold text-slate-900 dark:text-white">Recently Graded Cards</h3>
             <button
               onClick={refreshCards}
               disabled={loading}
-              className="p-2 hover:bg-slate-100 rounded-full transition-colors disabled:opacity-50"
+              className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors disabled:opacity-50"
               title="Refresh cards"
             >
-              <RefreshCw className={`w-4 h-4 text-slate-600 ${loading ? 'animate-spin' : ''}`} />
+              <RefreshCw className={`w-4 h-4 text-slate-600 dark:text-slate-400 ${loading ? 'animate-spin' : ''}`} />
             </button>
           </div>
 
           {error && (
             <div className="mb-4 text-center">
-              <span className="text-xs text-amber-600 bg-amber-50 px-2 py-1 rounded-full">
+              <span className="text-xs text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/30 px-2 py-1 rounded-full">
                 {error}
               </span>
             </div>
@@ -92,13 +92,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             {loading ? (
               // Loading skeletons
               Array.from({ length: 4 }).map((_, idx) => (
-                <div key={idx} className="bg-slate-100 rounded-xl aspect-[245/342] animate-pulse" />
+                <div key={idx} className="bg-slate-100 dark:bg-slate-800 rounded-xl aspect-[245/342] animate-pulse" />
               ))
             ) : (
               cards.map((card) => (
                 <div
                   key={card.id}
-                  className="group relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+                  className="group relative bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl dark:shadow-slate-900/50 dark:hover:shadow-slate-900/70 transition-all duration-300 hover:-translate-y-2"
                 >
                   <div className="aspect-[245/342] overflow-hidden">
                     <img
@@ -133,7 +133,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
 
           <div className="text-center mt-6">
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-slate-500 dark:text-slate-400">
               Live Pokemon TCG cards • Updated every refresh
             </p>
           </div>
