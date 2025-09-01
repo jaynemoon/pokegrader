@@ -9,6 +9,8 @@ import WishlistPage from './components/wishlist/WishlistPage';
 import MarketPage from './components/market/MarketPage';
 import BarcodeScanner from './components/mobile/BarcodeScanner';
 import { generateMockPriceData } from './utils/mockData';
+// Import to force dark mode classes inclusion
+import { DarkModeClasses } from './components/ui/DarkModeClasses';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewType>('home');
@@ -289,6 +291,9 @@ const App: React.FC = () => {
           onClose={() => setShowBarcodeScanner(false)}
         />
       )}
+      
+      {/* Hidden component to force dark mode classes inclusion */}
+      <DarkModeClasses />
     </>
   );
 };
