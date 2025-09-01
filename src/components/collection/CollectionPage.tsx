@@ -9,7 +9,8 @@ import BulkImportExport from './BulkImportExport';
 import CardGrid from './CardGrid';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
-import type { User, SavedCard, ViewType, CollectionFilter as FilterType, CollectionSort, CollectionStats as StatsType } from '../../types';
+import Input from '../ui/Input';
+import type { User, SavedCard, ViewType, CollectionFilter as FilterType, CollectionSort, CollectionStats as StatsType, WishlistItem } from '../../types';
 
 interface CollectionPageProps {
   user: User | null;
@@ -17,6 +18,8 @@ interface CollectionPageProps {
   setSavedCards: (cards: SavedCard[]) => void;
   setCurrentView: (view: ViewType) => void;
   handleSignOut: () => void;
+  wishlist: WishlistItem[];
+  setWishlist: (wishlist: WishlistItem[]) => void;
 }
 
 const CollectionPage: React.FC<CollectionPageProps> = ({
@@ -24,11 +27,21 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
   savedCards,
   setSavedCards,
   setCurrentView,
-  handleSignOut
+  handleSignOut,
+  wishlist,
+  setWishlist
 }) => {
-  const [activeView, setActiveView] = useState<'grid' | 'analytics'>('grid');
+  const [activeView, setActiveView] = useState<'grid' | 'analytics' | 'wishlist'>('grid');
   const [filter, setFilter] = useState<FilterType>({});
   const [sort, setSort] = useState<CollectionSort>({ field: 'date', direction: 'desc' });
+  const [showAddForm, setShowAddForm] = useState(false);
+  const [newWishlistItem, setNewWishlistItem] = useState<Partial<WishlistItem>>({
+    cardName: '',
+    set: '',
+    targetGrade: undefined,
+    maxPrice: undefined,
+    priority: 'medium'
+  });
 
   // Filter and sort cards
   const filteredAndSortedCards = savedCards
@@ -85,6 +98,44 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
     setSort({ field: 'date', direction: 'desc' });
   };
 
+  // Wishlist functions
+  const addToWishlist = () => {
+    if (!newWishlistItem.cardName) return;
+
+    const wishlistItem: WishlistItem = {
+      id: Date.now(),
+      cardName: newWishlistItem.cardName,
+      set: newWishlistItem.set,
+      targetGrade: newWishlistItem.targetGrade,
+      maxPrice: newWishlistItem.maxPrice,
+      priority: newWishlistItem.priority || 'medium',
+      dateAdded: new Date().toISOString().split('T')[0]
+    };
+
+    setWishlist([...wishlist, wishlistItem]);
+    setNewWishlistItem({
+      cardName: '',
+      set: '',
+      targetGrade: undefined,
+      maxPrice: undefined,
+      priority: 'medium'
+    });
+    setShowAddForm(false);
+  };
+
+  const removeFromWishlist = (id: number) => {
+    setWishlist(wishlist.filter(item => item.id !== id));
+  };
+
+  const getPriorityColor = (priority: string) => {
+    switch (priority) {
+      case 'high': return 'text-red-600 bg-red-50 border-red-200';
+      case 'medium': return 'text-yellow-600 bg-yellow-50 border-yellow-200';
+      case 'low': return 'text-green-600 bg-green-50 border-green-200';
+      default: return 'text-slate-600 bg-slate-50 border-slate-200';
+    }
+  };
+
   if (!user) {
     return (
       <div className="min-h-screen bg-slate-50">
@@ -135,9 +186,6 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
             </p>
           </div>
           <div className="flex space-x-3">
-            <Button onClick={() => setCurrentView('wishlist')} variant="secondary">
-              Wishlist
-            </Button>
             <Button onClick={() => setCurrentView('home')}>
               <Plus className="w-4 h-4 mr-2" />
               Add New Card
@@ -167,10 +215,180 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
           >
             Analytics
           </button>
+          <button
+            onClick={() => setActiveView('wishlist')}
+            className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+              activeView === 'wishlist'
+                ? 'bg-white text-slate-900 shadow-sm'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            Wishlist
+          </button>
         </div>
 
         {activeView === 'analytics' ? (
           <CollectionAnalytics stats={collectionStats} />
+        ) : activeView === 'wishlist' ? (
+          <>
+            {/* Wishlist Header */}
+            <div className="flex justify-between items-center mb-8">
+              <div>
+                <h2 className="text-2xl font-bold text-slate-900">Wishlist</h2>
+                <p className="text-slate-600">Track Pokemon cards you want to acquire</p>
+              </div>
+              
+              <Button
+                onClick={() => setShowAddForm(true)}
+                variant="primary"
+              >
+                Add to Wishlist
+              </Button>
+            </div>
+
+            {/* Add Form */}
+            {showAddForm && (
+              <Card className="mb-6">
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold text-slate-900 mb-4">Add New Wishlist Item</h3>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-1">
+                        Card Name *
+                      </label>
+                      <Input
+                        type="text"
+                        value={newWishlistItem.cardName || ''}
+                        onChange={(e) => setNewWishlistItem({ ...newWishlistItem, cardName: e.target.value })}
+                        placeholder="e.g., Charizard Base Set"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-1">
+                        Set
+                      </label>
+                      <Input
+                        type="text"
+                        value={newWishlistItem.set || ''}
+                        onChange={(e) => setNewWishlistItem({ ...newWishlistItem, set: e.target.value })}
+                        placeholder="e.g., Base Set"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-1">
+                        Target Grade
+                      </label>
+                      <Input
+                        type="number"
+                        min="1"
+                        max="10"
+                        value={newWishlistItem.targetGrade || ''}
+                        onChange={(e) => setNewWishlistItem({ ...newWishlistItem, targetGrade: Number(e.target.value) || undefined })}
+                        placeholder="1-10"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-1">
+                        Max Price ($)
+                      </label>
+                      <Input
+                        type="number"
+                        min="0"
+                        value={newWishlistItem.maxPrice || ''}
+                        onChange={(e) => setNewWishlistItem({ ...newWishlistItem, maxPrice: Number(e.target.value) || undefined })}
+                        placeholder="Maximum price"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium text-slate-700 mb-1">
+                      Priority
+                    </label>
+                    <select
+                      className="px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      value={newWishlistItem.priority}
+                      onChange={(e) => setNewWishlistItem({ ...newWishlistItem, priority: e.target.value as 'low' | 'medium' | 'high' })}
+                    >
+                      <option value="low">Low</option>
+                      <option value="medium">Medium</option>
+                      <option value="high">High</option>
+                    </select>
+                  </div>
+
+                  <div className="flex gap-3">
+                    <Button onClick={addToWishlist} variant="primary">
+                      Add to Wishlist
+                    </Button>
+                    <Button
+                      onClick={() => setShowAddForm(false)}
+                      variant="secondary"
+                    >
+                      Cancel
+                    </Button>
+                  </div>
+                </div>
+              </Card>
+            )}
+
+            {/* Wishlist Items */}
+            {wishlist.length === 0 ? (
+              <Card>
+                <div className="p-8 text-center">
+                  <p className="text-slate-600 mb-4">Your wishlist is empty</p>
+                  <Button
+                    onClick={() => setShowAddForm(true)}
+                    variant="primary"
+                  >
+                    Add Your First Item
+                  </Button>
+                </div>
+              </Card>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {wishlist.map((item) => (
+                  <Card key={item.id}>
+                    <div className="p-6">
+                      <div className="flex justify-between items-start mb-3">
+                        <h3 className="font-semibold text-slate-900">{item.cardName}</h3>
+                        <span className={`px-2 py-1 rounded-md text-xs font-medium border ${getPriorityColor(item.priority)}`}>
+                          {item.priority}
+                        </span>
+                      </div>
+
+                      {item.set && (
+                        <p className="text-slate-600 text-sm mb-2">Set: {item.set}</p>
+                      )}
+
+                      <div className="space-y-1 text-sm text-slate-600">
+                        {item.targetGrade && (
+                          <p>Target Grade: {item.targetGrade}</p>
+                        )}
+                        {item.maxPrice && (
+                          <p>Max Price: ${item.maxPrice}</p>
+                        )}
+                        <p>Added: {item.dateAdded}</p>
+                      </div>
+
+                      <div className="flex gap-2 mt-4">
+                        <Button
+                          onClick={() => removeFromWishlist(item.id)}
+                          variant="secondary"
+                          size="sm"
+                        >
+                          Remove
+                        </Button>
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            )}
+          </>
         ) : (
           <>
             {/* Collection Stats */}
@@ -190,7 +408,6 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
               onSortChange={setSort}
               onReset={resetFilters}
             />
-
 
             {/* Results Count */}
             {filteredAndSortedCards.length !== savedCards.length && (

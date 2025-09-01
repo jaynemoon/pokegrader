@@ -260,7 +260,7 @@ const App: React.FC = () => {
       currentComponent = <AnalysisPage {...appProps} onAnalyzeWithAR={analyzeWithAR} />;
       break;
     case 'collection':
-      currentComponent = <CollectionPage {...appProps} />;
+      currentComponent = <CollectionPage {...appProps} wishlist={wishlist} setWishlist={setWishlist} />;
       break;
     case 'wishlist':
       currentComponent = <WishlistPage {...appProps} />;
