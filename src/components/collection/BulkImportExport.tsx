@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import { ChevronDown, ChevronUp, Upload, Download } from 'lucide-react';
 import type { SavedCard } from '../../types';
 import Button from '../ui/Button';
 
@@ -9,6 +10,7 @@ interface BulkImportExportProps {
 
 const BulkImportExport: React.FC<BulkImportExportProps> = ({ savedCards, onImport }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const handleExportCSV = () => {
     const csvContent = [
@@ -100,38 +102,71 @@ const BulkImportExport: React.FC<BulkImportExportProps> = ({ savedCards, onImpor
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-sm border border-slate-200 mb-6">
-      <h3 className="text-lg font-semibold text-slate-900 mb-4">Bulk Import/Export</h3>
-      
-      <div className="flex flex-wrap gap-3">
-        <Button onClick={handleExportCSV} variant="secondary">
-          Export CSV
-        </Button>
-        
-        <Button onClick={handleExportJSON} variant="secondary">
-          Export JSON
-        </Button>
-        
-        <Button 
-          onClick={() => fileInputRef.current?.click()}
-          variant="primary"
-        >
-          Import File
-        </Button>
-        
-        <input
-          ref={fileInputRef}
-          type="file"
-          accept=".csv,.json"
-          onChange={handleImportFile}
-          className="hidden"
-        />
-      </div>
-      
-      <p className="text-sm text-slate-600 mt-3">
-        Export your collection or import cards from CSV/JSON files. 
-        CSV format: Card Name, Grade, Value, Date, Centering, Corners, Edges, Surface
-      </p>
+    <div className="bg-white rounded-lg shadow-sm border border-slate-200 mb-6">
+      {/* Collapsible Header */}
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-slate-50 transition-colors rounded-lg"
+      >
+        <div className="flex items-center gap-3">
+          <div className="p-2 bg-blue-50 rounded-lg">
+            {isExpanded ? <Upload className="w-4 h-4 text-blue-600" /> : <Download className="w-4 h-4 text-blue-600" />}
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold text-slate-900">Bulk Import/Export</h3>
+            <p className="text-sm text-slate-600">Manage your collection data</p>
+          </div>
+        </div>
+        {isExpanded ? (
+          <ChevronUp className="w-5 h-5 text-slate-400" />
+        ) : (
+          <ChevronDown className="w-5 h-5 text-slate-400" />
+        )}
+      </button>
+
+      {/* Collapsible Content */}
+      {isExpanded && (
+        <div className="px-6 pb-6 border-t border-slate-100">
+          <div className="pt-4">
+            <div className="flex flex-wrap gap-3 mb-4">
+              <Button onClick={handleExportCSV} variant="secondary" size="sm">
+                <Download className="w-4 h-4 mr-2" />
+                Export CSV
+              </Button>
+              
+              <Button onClick={handleExportJSON} variant="secondary" size="sm">
+                <Download className="w-4 h-4 mr-2" />
+                Export JSON
+              </Button>
+              
+              <Button 
+                onClick={() => fileInputRef.current?.click()}
+                variant="primary"
+                size="sm"
+              >
+                <Upload className="w-4 h-4 mr-2" />
+                Import File
+              </Button>
+              
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept=".csv,.json"
+                onChange={handleImportFile}
+                className="hidden"
+              />
+            </div>
+            
+            <div className="bg-slate-50 p-3 rounded-lg">
+              <p className="text-sm text-slate-600">
+                <strong>Export:</strong> Download your collection as CSV or JSON. <br />
+                <strong>Import:</strong> Upload cards from CSV/JSON files. <br />
+                <strong>CSV format:</strong> Card Name, Grade, Value, Date, Centering, Corners, Edges, Surface
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
