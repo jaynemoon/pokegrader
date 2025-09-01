@@ -3,6 +3,7 @@ import Navigation from '../ui/Navigation';
 import HeroSection from './HeroSection';
 import FeaturesSection from './FeaturesSection';
 import PricingSection from './PricingSection';
+import NewsletterSection from './NewsletterSection';
 import Footer from './Footer';
 import type { User, SavedCard, ViewType } from '../../types';
 
@@ -42,6 +43,7 @@ const HomePage: React.FC<HomePageProps> = ({
       
       <FeaturesSection />
       <PricingSection onUpgradeClick={() => setCurrentView('upgrade')} />
+      <NewsletterSection />
       <Footer />
     </div>
   );
