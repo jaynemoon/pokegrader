@@ -1,10 +1,13 @@
 import React, { useState, useRef } from 'react';
-import type { ViewType, User, SavedCard, GradeResults, AuthForm, AuthMode } from './types';
+import type { ViewType, User, SavedCard, GradeResults, AuthForm, AuthMode, WishlistItem, PriceAlert, AROverlay, BarcodeScanResult } from './types';
 import HomePage from './components/home/HomePage';
 import AnalysisPage from './components/grading/AnalysisPage';
 import CollectionPage from './components/collection/CollectionPage';
 import AuthPage from './components/auth/AuthPage';
 import UpgradePage from './components/upgrade/UpgradePage';
+import WishlistPage from './components/wishlist/WishlistPage';
+import MarketPage from './components/market/MarketPage';
+import BarcodeScanner from './components/mobile/BarcodeScanner';
 import { generateMockPriceData } from './utils/mockData';
 
 const App: React.FC = () => {
@@ -19,6 +22,12 @@ const App: React.FC = () => {
   const [isAuthLoading, setIsAuthLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const cameraInputRef = useRef<HTMLInputElement>(null);
+  
+  // New feature states
+  const [wishlist, setWishlist] = useState<WishlistItem[]>([]);
+  const [priceAlerts, setPriceAlerts] = useState<PriceAlert[]>([]);
+  const [showBarcodeScanner, setShowBarcodeScanner] = useState(false);
+  const [arOverlay, setAROverlay] = useState<AROverlay>({ isActive: false });
 
   // Simulate AI grading analysis
   const analyzeCard = async () => {
@@ -118,6 +127,40 @@ const App: React.FC = () => {
           userId: mockUser.id
         }
       ]);
+      
+      // Add sample wishlist items for demo user
+      setWishlist([
+        {
+          id: 1,
+          cardName: 'Charizard Base Set',
+          set: 'Base Set',
+          targetGrade: 9,
+          maxPrice: 1500,
+          priority: 'high',
+          dateAdded: '2024-01-10'
+        },
+        {
+          id: 2,
+          cardName: 'Blastoise Base Set',
+          set: 'Base Set',
+          targetGrade: 8,
+          maxPrice: 800,
+          priority: 'medium',
+          dateAdded: '2024-01-12'
+        }
+      ]);
+      
+      // Add sample price alerts for demo user
+      setPriceAlerts([
+        {
+          id: 1,
+          cardName: 'Charizard Base Set',
+          targetPrice: 1200,
+          condition: 'below',
+          isActive: true,
+          dateCreated: '2024-01-15'
+        }
+      ]);
     }
   };
 
@@ -183,23 +226,71 @@ const App: React.FC = () => {
     handleSignOut,
     saveCard,
     resetAnalysis,
-    onUpgrade: handleUpgrade
+    onUpgrade: handleUpgrade,
+    wishlist,
+    setWishlist,
+    priceAlerts,
+    setPriceAlerts,
+    showBarcodeScanner,
+    setShowBarcodeScanner,
+    arOverlay,
+    setAROverlay,
+    setSavedCards
   };
 
+  const handleBarcodeResult = (result: BarcodeScanResult) => {
+    setShowBarcodeScanner(false);
+    // Pre-fill analysis with barcode data
+    alert(`Found: ${result.cardName} from ${result.set}`);
+    setCurrentView('analysis');
+  };
+
+
+  const analyzeWithAR = () => {
+    setCurrentView('analysis');
+    analyzeCard();
+  };
+
+  let currentComponent;
   switch (currentView) {
     case 'home':
-      return <HomePage {...appProps} />;
+      currentComponent = <HomePage {...appProps} />;
+      break;
     case 'analysis':
-      return <AnalysisPage {...appProps} />;
+      currentComponent = <AnalysisPage {...appProps} onAnalyzeWithAR={analyzeWithAR} />;
+      break;
     case 'collection':
-      return <CollectionPage {...appProps} />;
+      currentComponent = <CollectionPage {...appProps} />;
+      break;
+    case 'wishlist':
+      currentComponent = <WishlistPage {...appProps} />;
+      break;
+    case 'market':
+      currentComponent = <MarketPage {...appProps} />;
+      break;
     case 'auth':
-      return <AuthPage {...appProps} />;
+      currentComponent = <AuthPage {...appProps} />;
+      break;
     case 'upgrade':
-      return <UpgradePage {...appProps} />;
+      currentComponent = <UpgradePage {...appProps} />;
+      break;
     default:
-      return <HomePage {...appProps} />;
+      currentComponent = <HomePage {...appProps} />;
   }
+
+  return (
+    <>
+      {currentComponent}
+      
+      {/* Barcode Scanner Modal */}
+      {showBarcodeScanner && (
+        <BarcodeScanner
+          onScanResult={handleBarcodeResult}
+          onClose={() => setShowBarcodeScanner(false)}
+        />
+      )}
+    </>
+  );
 };
 
 export default App;

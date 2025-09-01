@@ -1,5 +1,5 @@
-import React from 'react';
-import { Sparkles, History, Crown } from 'lucide-react';
+import React, { useState } from 'react';
+import { Sparkles, History, Crown, Heart, TrendingUp, Scan, Menu, X } from 'lucide-react';
 import type { User, SavedCard, ViewType } from '../../types';
 // import { masterballIcon } from '/src/masterball.svg';
 
@@ -8,19 +8,25 @@ interface NavigationProps {
   savedCards: SavedCard[];
   setCurrentView: (view: ViewType) => void;
   handleSignOut: () => void;
+  setShowBarcodeScanner?: (show: boolean) => void;
 }
 
 const Navigation: React.FC<NavigationProps> = ({
   user,
   savedCards,
   setCurrentView,
-  handleSignOut
+  handleSignOut,
+  setShowBarcodeScanner
 }) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-2">
+          <button 
+            onClick={() => setCurrentView('home')}
+            className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+          >
             <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-lg flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-white" />
               {/* <img
@@ -32,16 +38,45 @@ const Navigation: React.FC<NavigationProps> = ({
             <span className="text-xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
               PokéGrader
             </span>
-          </div>
-          <div className="flex items-center gap-3">
-            {user && savedCards.length > 0 && (
-              <button
-                onClick={() => setCurrentView('collection')}
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors border border-slate-200 rounded-xl hover:border-slate-300"
-              >
-                <History className="w-4 h-4" />
-                Collection ({savedCards.length})
-              </button>
+          </button>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-3">
+            {user && (
+              <>
+                <button
+                  onClick={() => setCurrentView('collection')}
+                  className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors border border-slate-200 rounded-xl hover:border-slate-300"
+                >
+                  <History className="w-4 h-4" />
+                  Collection ({savedCards.length})
+                </button>
+                
+                <button
+                  onClick={() => setCurrentView('wishlist')}
+                  className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors border border-slate-200 rounded-xl hover:border-slate-300"
+                >
+                  <Heart className="w-4 h-4" />
+                  Wishlist
+                </button>
+                
+                <button
+                  onClick={() => setCurrentView('market')}
+                  className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors border border-slate-200 rounded-xl hover:border-slate-300"
+                >
+                  <TrendingUp className="w-4 h-4" />
+                  Market
+                </button>
+                
+                {setShowBarcodeScanner && (
+                  <button
+                    onClick={() => setShowBarcodeScanner(true)}
+                    className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors border border-slate-200 rounded-xl hover:border-slate-300"
+                  >
+                    <Scan className="w-4 h-4" />
+                    Scan
+                  </button>
+                )}
+              </>
             )}
             
             {user && !user.isPro && (
@@ -84,35 +119,87 @@ const Navigation: React.FC<NavigationProps> = ({
                 </button>
               </div>
             ) : (
-              <div className="flex items-center gap-3">
+              <button
+                onClick={() => setCurrentView('auth')}
+                className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-xl text-sm font-medium transition-colors"
+              >
+                Sign In
+              </button>
+            )}
+          </div>
+          
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 text-slate-600 hover:text-slate-900"
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+        
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden border-t border-slate-200 bg-white">
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              {user ? (
+                <>
+                  <button
+                    onClick={() => { setCurrentView('collection'); setIsMobileMenuOpen(false); }}
+                    className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg"
+                  >
+                    <History className="w-4 h-4" />
+                    Collection ({savedCards.length})
+                  </button>
+                  
+                  <button
+                    onClick={() => { setCurrentView('wishlist'); setIsMobileMenuOpen(false); }}
+                    className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg"
+                  >
+                    <Heart className="w-4 h-4" />
+                    Wishlist
+                  </button>
+                  
+                  <button
+                    onClick={() => { setCurrentView('market'); setIsMobileMenuOpen(false); }}
+                    className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg"
+                  >
+                    <TrendingUp className="w-4 h-4" />
+                    Market
+                  </button>
+                  
+                  {setShowBarcodeScanner && (
+                    <button
+                      onClick={() => { setShowBarcodeScanner(true); setIsMobileMenuOpen(false); }}
+                      className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg"
+                    >
+                      <Scan className="w-4 h-4" />
+                      Barcode Scanner
+                    </button>
+                  )}
+                  
+                  {!user.isPro && (
+                    <button
+                      onClick={() => { setCurrentView('upgrade'); setIsMobileMenuOpen(false); }}
+                      className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg"
+                    >
+                      <Crown className="w-4 h-4" />
+                      Upgrade to Pro
+                    </button>
+                  )}
+                </>
+              ) : (
                 <button
-                  onClick={() => setCurrentView('home')}
-                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors"
-                >
-                  Features
-                </button>
-                <button
-                  onClick={() => setCurrentView('home')}
-                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors"
-                >
-                  Pricing
-                </button>
-                               <button
-                  onClick={() => setCurrentView('home')}
-                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors"
-                >
-                  Mobile App
-                </button>
-                <button
-                  onClick={() => setCurrentView('auth')}
-                  className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-xl text-sm font-medium transition-colors"
+                  onClick={() => { setCurrentView('auth'); setIsMobileMenuOpen(false); }}
+                  className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium bg-slate-900 text-white rounded-lg"
                 >
                   Sign In
                 </button>
-              </div>
-            )}
+              )}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </nav>
   );
