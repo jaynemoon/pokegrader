@@ -16,7 +16,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   const { cards, loading, error } = usePokemonCards(4);
   return (
     <section className="relative">
-      <PatternBackground pattern="dots" opacity={0.1} />
+      <PatternBackground pattern="dots"opacity={0.1} />
       <div className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
         <div className="text-center max-w-4xl mx-auto">
         {/* Pikachu Image */}

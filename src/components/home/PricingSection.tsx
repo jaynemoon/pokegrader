@@ -71,7 +71,7 @@ const PricingSection: React.FC<PricingSectionProps> = ({ setCurrentView }) => {
           {/* Pro Plan */}
           <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-3xl p-8 border-2 border-purple-200 dark:border-purple-700 relative transition-colors flex flex-col h-full">
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-              <span className="bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-500 dark:to-pink-500 text-white px-4 py-1 rounded-full text-sm font-medium">
+              <span className="bg-gradient-to-r from-purple-600 to-pink-400 dark:from-purple-500 dark:to-pink-500 text-white px-4 py-1 rounded-full text-sm font-medium">
                 Most Popular
               </span>
             </div>
@@ -110,7 +110,7 @@ const PricingSection: React.FC<PricingSectionProps> = ({ setCurrentView }) => {
             <div className="mt-auto">
               <button 
                 onClick={() => setCurrentView('auth')}
-                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-500 dark:to-pink-500 hover:from-purple-700 hover:to-pink-700 dark:hover:from-purple-600 dark:hover:to-pink-600 text-white px-6 py-3 rounded-2xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="w-full bg-gradient-to-r from-rose-600/50 to-pink-500 dark:from-rose-500 dark:to-pink-500 hover:from-rose-400 hover:to-pink-700 dark:hover:from-rose-600 dark:hover:to-pink-500 text-white px-6 py-3 rounded-2xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-103"
               >
                 Upgrade to Pro
               </button>
