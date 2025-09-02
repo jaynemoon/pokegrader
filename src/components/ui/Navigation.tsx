@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Crown, Scan, Menu, X, DollarSign } from 'lucide-react';
+import { Crown, Scan, Menu, X } from 'lucide-react';
 import masterballIcon from '../../assets/masterball.svg';
 import pikaCoin from '../../assets/pika-coin.png';
 import packIcon from '../../assets/pack.png';
@@ -174,8 +174,12 @@ const Navigation: React.FC<NavigationProps> = ({
                     onClick={() => { setCurrentView('market'); setIsMobileMenuOpen(false); }}
                     className="flex items-center gap-6 w-full px-5 py-4 text-md font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg"
                   >
-                    <DollarSign className="w-5 h-5" />
-                    Market
+                    <img
+                      src={pikaCoin}
+                      alt="PokéGrader-icon"
+                      className="w-4 h-4"
+                    />
+                    Marketplace
                   </button>
                   
                   {setShowBarcodeScanner && (
