@@ -94,7 +94,7 @@ const BulkImportExport: React.FC<BulkImportExportProps> = ({ savedCards, onImpor
 
         onImport(importedCards);
         alert(`Successfully imported ${importedCards.length} cards!`);
-      } catch (error) {
+      } catch {
         alert('Error importing file. Please check the format and try again.');
       }
     };

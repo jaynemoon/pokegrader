@@ -1,13 +1,5 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-
-type Theme = 'light' | 'dark';
-
-interface ThemeContextType {
-  theme: Theme;
-  toggleTheme: () => void;
-}
-
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+import React, { useEffect, useState } from 'react';
+import { ThemeContext, type Theme } from './ThemeContextDefinition';
 
 interface ThemeProviderProps {
   children: React.ReactNode;
@@ -49,7 +41,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     } else {
       document.documentElement.classList.remove('dark');
     }
-  }, []);
+  }, [theme]);
 
   // Listen for system theme changes
   useEffect(() => {
@@ -86,14 +78,6 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       {children}
     </ThemeContext.Provider>
   );
-};
-
-export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
-  }
-  return context;
 };
 
 export { ThemeProvider };

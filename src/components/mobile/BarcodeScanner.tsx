@@ -49,7 +49,7 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onScanResult, onClose }
         simulateBarcodeScan();
       }, 3000);
 
-    } catch (err) {
+    } catch {
       setError('Camera access denied or not available');
       setIsScanning(false);
     }

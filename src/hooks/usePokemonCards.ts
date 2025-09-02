@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 interface PokemonCard {
   id: string;
@@ -87,28 +87,28 @@ const fallbackCards: PokemonCard[] = [
   }
 ];
 
+// Define the rarest Pokemon card rarities based on Pokemon TCG hierarchy
+const rarestRarities = [
+  'Rare Secret',
+  'Rare Rainbow',
+  'Amazing Rare',
+  'Rare Shiny',
+  'Rare Shiny GX',
+  'Rare Holo VMAX',
+  'Rare Ultra',
+  'Rare Prime',
+  'LEGEND',
+  'Rare Holo ex',
+  'Rare Holo LV.X',
+  'Rare ACE'
+];
+
 export const usePokemonCards = (cardCount: number = 4) => {
   const [cards, setCards] = useState<PokemonCard[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Define the rarest Pokemon card rarities based on Pokemon TCG hierarchy
-  const rarestRarities = [
-    'Rare Secret',
-    'Rare Rainbow',
-    'Amazing Rare',
-    'Rare Shiny',
-    'Rare Shiny GX',
-    'Rare Holo VMAX',
-    'Rare Ultra',
-    'Rare Prime',
-    'LEGEND',
-    'Rare Holo ex',
-    'Rare Holo LV.X',
-    'Rare ACE'
-  ];
-
-  const fetchRarestCards = async () => {
+  const fetchRarestCards = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -174,7 +174,7 @@ export const usePokemonCards = (cardCount: number = 4) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [cardCount]);
 
   const refreshCards = () => {
     fetchRarestCards();
@@ -182,7 +182,7 @@ export const usePokemonCards = (cardCount: number = 4) => {
 
   useEffect(() => {
     fetchRarestCards();
-  }, [cardCount]);
+  }, [fetchRarestCards]);
 
   return {
     cards,

@@ -50,7 +50,7 @@ const ARPreview: React.FC<ARPreviewProps> = ({ onAnalyzeWithAR, arOverlay, setAR
         simulateARDetection();
       }, 2000);
 
-    } catch (err) {
+    } catch {
       setError('Camera access required for AR mode');
     }
   };

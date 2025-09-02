@@ -73,7 +73,7 @@ export const useOfflineMode = () => {
       saveOfflineData(savedCards, wishlist);
       
       return { success: true, message: 'Data synced successfully' };
-    } catch (error) {
+    } catch {
       return { success: false, message: 'Sync failed' };
     }
   };

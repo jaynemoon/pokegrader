@@ -67,10 +67,11 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
         case 'value':
           return (a.estimatedValue - b.estimatedValue) * multiplier;
         case 'date':
-        default:
+        default: {
           const dateA = new Date(a.dateSaved).getTime();
           const dateB = new Date(b.dateSaved).getTime();
           return (dateA - dateB) * multiplier;
+        }
       }
     });
 
