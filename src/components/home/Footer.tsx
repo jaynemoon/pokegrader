@@ -8,10 +8,10 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ setCurrentView }) => {
   return (
-    <footer className="py-16 bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-white relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="col-span-1 md:col-span-2">
+    <footer className="py-12 sm:py-16 bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-white relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+            <div className="col-span-1 sm:col-span-2 lg:col-span-2">
               <button 
                 onClick={() => setCurrentView('home')}
                 className="flex items-center space-x-2 mb-4 hover:opacity-80 transition-opacity"
@@ -27,7 +27,7 @@ const Footer: React.FC<FooterProps> = ({ setCurrentView }) => {
                   PokéGrader
                 </span>
               </button>
-              <p className="text-slate-600 dark:text-cyan-100 text-sm mb-6 max-w-md">
+              <p className="text-slate-600 dark:text-cyan-100 text-sm mb-6 max-w-xs sm:max-w-md">
                 Professional AI-powered Pokemon card grading with instant results. Get PSA grades for trade price in seconds.
               </p>
 
@@ -55,7 +55,7 @@ const Footer: React.FC<FooterProps> = ({ setCurrentView }) => {
             </div>
 
             {/* Product column */}
-            <div>
+            <div className="mt-8 sm:mt-0">
               <h3 className="text-slate-900 dark:text-white font-semibold mb-4">Product</h3>
               <ul className="space-y-3 text-sm">
                 <li>
@@ -86,7 +86,7 @@ const Footer: React.FC<FooterProps> = ({ setCurrentView }) => {
             </div>
 
             {/* Company column */}
-            <div>
+            <div className="mt-8 sm:mt-0">
               <h3 className="text-slate-900 dark:text-white font-semibold mb-4">Company</h3>
               <ul className="space-y-3 text-sm">
                 <li>
@@ -118,19 +118,19 @@ const Footer: React.FC<FooterProps> = ({ setCurrentView }) => {
           </div>
         </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-8 sm:mt-12 pt-8 border-t border-slate-200 dark:border-slate-700">
         <div className="mb-6">
           <a
             href="https://buymeacoffee.com/jaynemoon?new=1"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105 text-orange-700 bg-orange-100 hover:bg-orange-200 dark:text-slate-800 dark:bg-orange-300 dark:hover:bg-orange-400"
+            className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105 text-orange-700 bg-orange-100 hover:bg-orange-200 dark:text-slate-800 dark:bg-orange-300 dark:hover:bg-orange-400 text-sm sm:text-base"
             style={{ border: '2px dashed #f76834' }}
           >
             ☕ Make Jayney a Pokémon Coffee!
           </a>
         </div>
-        <p className="text-slate-500 dark:text-slate-400 text-sm">
+        <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm">
           Built with ❤️ for Pokémon collectors everywhere
         </p>
       </div>

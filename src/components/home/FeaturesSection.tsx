@@ -41,34 +41,34 @@ const FeaturesSection: React.FC = () => {
     {
       icon: Shield,
       title: "Advanced AI Grading",
-      description: "Professional PSA-style grading specifically trained on Pokemon TCG cards, analyzing centering, corners, edges, and surface condition with 99.2% accuracy.",
+      description: "Professional PSA-style grading specifically trained on Pokemon TCG cards, analyzing centering, corners, edges, and surface condition.",
       badge: "Trained on 800K+ Pokemon cards",
-      color: "from-blue-500 to-cyan-500",
+      color: "from-yellow-500 to-yellow-500",
       badgeColor: "text-yellow-600 dark:text-yellow-400",
       visualization: () => {
         const currentCard = pokemonCards[animationStep % pokemonCards.length];
         return (
-          <div className="relative h-48 bg-gradient-to-br from-blue-50 via-cyan-50 to-blue-100 dark:from-blue-900/20 dark:via-cyan-900/20 dark:to-blue-900/30 rounded-xl p-4 mb-6 overflow-hidden">
+          <div className="relative h-48 bg-gradient-to-br from-yellow-200 via-orange-300 to-yellow-100 dark:from-yellow-400/20 dark:via-orange-900/20 dark:to-orange-900/30 rounded-xl p-4 mb-6 overflow-hidden">
             {/* Background pattern */}
             <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-2 left-2 w-16 h-16 border-2 border-blue-300 rounded-lg rotate-12" />
-              <div className="absolute bottom-2 right-2 w-12 h-12 border-2 border-cyan-300 rounded-lg -rotate-12" />
+              <div className="absolute top-2 left-2 w-16 h-16 border-2 border-yellow-300 rounded-lg rotate-12" />
+              <div className="absolute bottom-2 right-2 w-12 h-12 border-2 border-yellow-300 rounded-lg -rotate-12" />
             </div>
             
             {/* Card mockup */}
             <div className="relative bg-white dark:bg-slate-800 rounded-lg p-3 mb-4 shadow-lg transform hover:scale-105 transition-transform duration-300">
               <div className="flex items-center justify-between mb-2">
                 <div className="text-sm font-bold text-slate-800 dark:text-white">{currentCard.name}</div>
-                <div className="px-2 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs rounded-full font-bold">
+                <div className="px-2 py-1 bg-gradient-to-r from-yellow-400 to-orange-400 text-white text-xs rounded-full font-bold">
                   PSA {currentCard.grade}
                 </div>
               </div>
               
               {/* Scanning animation */}
-              <div className="relative h-16 bg-gradient-to-r from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 rounded-md mb-2 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-200/50 to-transparent w-full animate-pulse" />
-                <div className="absolute top-2 left-2 text-xs text-slate-500 dark:text-slate-400">Analyzing...</div>
-                <div className={`absolute bottom-1 right-1 w-2 h-2 rounded-full transition-colors duration-1000 ${animationStep % 2 === 0 ? 'bg-green-400' : 'bg-blue-400'}`} />
+              <div className="relative h-16 bg-gradient-to-r from-yellow-100 to-yellow-200 dark:from-slate-500 dark:to-slate-300 rounded-md mb-2 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-300/20 to-transparent w-full animate-pulse" />
+                <div className="absolute top-2 left-2 text-xs text-white-500 dark:text-white">Analyzing Pokemon Card...</div>
+                <div className={`absolute bottom-1 right-1 w-2 h-2 rounded-full transition-colors duration-1000 ${animationStep % 2 === 0 ? 'bg-green-400' : 'bg-green-400'}`} />
               </div>
               
               <div className="flex items-center justify-between text-xs">
@@ -137,7 +137,7 @@ const FeaturesSection: React.FC = () => {
         const totalVolume = pokemonSets.reduce((sum, set) => sum + set.volume, 0);
         
         return (
-          <div className="relative h-48 bg-gradient-to-br from-purple-50 via-violet-50 to-indigo-100 dark:from-purple-900/20 dark:via-violet-900/20 dark:to-indigo-900/30 rounded-xl p-4 mb-6 overflow-hidden">
+          <div className="relative h-48 bg-gradient-to-br from-purple-300 via-indigo-400 to-indigo-100 dark:from-purple-700/20 dark:via-violet-700/20 dark:to-indigo-700/30 rounded-xl p-4 mb-6 overflow-hidden">
             {/* Background decorations */}
             <div className="absolute inset-0 opacity-5">
               <div className="absolute top-2 left-2 text-5xl">📊</div>
@@ -148,7 +148,7 @@ const FeaturesSection: React.FC = () => {
             {/* Header with animated counter */}
             <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-lg p-3 mb-4 shadow-md">
               <div className="flex items-center justify-between">
-                <div className="text-sm font-bold text-slate-800 dark:text-white">Pokemon Set Analytics</div>
+                <div className="text-sm font-bold text-slate-800 dark:text-white">Pokemon TCG Analytics</div>
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
                   <span className="text-xs text-slate-600 dark:text-slate-400">Live Data</span>
@@ -237,9 +237,9 @@ const FeaturesSection: React.FC = () => {
     {
       icon: DollarSign,
       title: "Market Pricing",
-      description: "Real-time pricing data from major Pokemon card marketplaces including eBay, PWCC, and Heritage Auctions with set-specific analytics.",
+      description: "Real-time pricing data from major Pokemon TCG marketplaces including eBay, PWCC, and Heritage Auctions with set-specific analytics.",
       badge: "Live Pokemon market data",
-      color: "from-emerald-500 to-teal-500",
+      color: "from-emerald-800 to-teal-800",
       badgeColor: "text-emerald-600 dark:text-emerald-400",
       visualization: () => {
         const priceData = [2800, 3200, 2900, 3400, 3600, 3800, 3847];
@@ -247,7 +247,7 @@ const FeaturesSection: React.FC = () => {
         const minPrice = Math.min(...priceData);
         
         return (
-          <div className="relative h-48 bg-gradient-to-br from-emerald-50 via-green-50 to-teal-100 rounded-xl p-4 mb-6 overflow-hidden">
+          <div className="relative h-48 bg-gradient-to-br from-emerald-400/20 via-emerald-300 to-teal-200 rounded-xl p-4 mb-6 overflow-hidden">
             {/* Background elements */}
             <div className="absolute inset-0 opacity-5">
               <div className="absolute top-4 right-4 text-6xl">💰</div>
@@ -257,8 +257,8 @@ const FeaturesSection: React.FC = () => {
             {/* Price header */}
             <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-lg p-3 mb-4 shadow-md">
               <div className="flex items-center justify-between mb-2">
-                <div className="text-sm font-bold dark:text-slate-800">Charizard Base Set PSA 10</div>
-                <div className="flex items-center bg-gradient-to-r from-emerald-500 to-green-500 text-white px-2 py-1 rounded-full">
+                <div className="text-sm font-bold dark:text-white">Charizard Base 1st Edition PSA 10</div>
+                <div className="flex items-center dark:bg-gradient-to-r dark:from-emerald-400 to-green-500 text-white px-2 py-1 rounded-full">
                   <TrendingUp className="w-3 h-3 mr-1" />
                   <span className="text-xs font-bold">+24.3%</span>
                 </div>
@@ -340,13 +340,13 @@ const FeaturesSection: React.FC = () => {
             Features
           </h2>
           <p className="text-xl text-slate-600 dark:text-slate-300">
-            The world's most advanced Pokemon card grading system, trained on 800K+ cards with real-time TCG market data
+            The world's most advanced Pokemon card grading system, trained on 800K+ cards with real-time TCG market data.
           </p>
         </div>
 
         {/* Stats Section */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto mb-16">
-          <div className="group rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-lg text-center">
+          <div className="group rounded-2xl p-6 transition-all duration-300 text-center">
             <div className="flex justify-center items-center mb-3 h-20">
               <img 
                 src={electricNrgIcon} 
@@ -360,7 +360,7 @@ const FeaturesSection: React.FC = () => {
             <div className="text-lg font-bold text-yellow-500 dark:text-yellow-500">Lightning Fast Grading</div>
           </div>
           
-          <div className="group rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-lg text-center">
+          <div className="group rounded-2xl p-6 transition-all duration-300 text-center">
             <div className="flex justify-center items-center mb-3 h-20">
               <img 
                 src={psyNrgIcon} 
@@ -371,10 +371,10 @@ const FeaturesSection: React.FC = () => {
             <div className="text-3xl font-bold text-purple-500 dark:text-purple mb-1">
               95%
             </div>
-            <div className="text-lg font-bold text-purple-600 dark:text-purple-600">Precision Accuracy</div>
+            <div className="text-lg font-bold text-purple-500 dark:text-purple-500">Precision Accuracy</div>
           </div>
           
-          <div className="group rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-lg text-center">
+          <div className="group rounded-2xl p-6 transition-all duration-300 text-center">
             <div className="flex justify-center items-center mb-3 h-20">
               <img 
                 src={grassNrgIcon} 
