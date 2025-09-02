@@ -9,14 +9,14 @@ const Footer: React.FC = () => {
             href="https://buymeacoffee.com/jaynemoon"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105 dark:text-slate-800"
-            style={{ backgroundColor: '#ffedc7', border: '1px dashed #f76834' }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105 dark:text-slate-800 dark:bg-yellow-300"
+            style={{ border: '1px dashed #f76834' }}
           >
-            ☕ Make Jayney a Poke Coffee
+            ☕ Make Jayney a PokéCoffee!
           </a>
         </div>
         <p className="dark:text-slate-400 text-sm">
-          Built with ❤️ for Pokemon collectors everywhere
+          Built with ❤️ for Pokémon collectors everywhere
         </p>
       </div>
     </footer>

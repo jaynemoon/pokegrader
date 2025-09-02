@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { History, Crown, Heart, TrendingUp, Scan, Menu, X } from 'lucide-react';
+import { History, Crown, TrendingUp, Scan, Menu, X } from 'lucide-react';
 import masterballIcon from '../../assets/masterball.svg';
 import ThemeToggle from './ThemeToggle';
 import type { User, SavedCard, ViewType } from '../../types';
@@ -41,7 +41,6 @@ const Navigation: React.FC<NavigationProps> = ({
           </button>
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-3">
-            <ThemeToggle />
             {user && (
               <>
                 <button
@@ -50,14 +49,6 @@ const Navigation: React.FC<NavigationProps> = ({
                 >
                   <History className="w-4 h-4" />
                   Collection ({savedCards.length})
-                </button>
-                
-                <button
-                  onClick={() => setCurrentView('wishlist')}
-                  className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-700 rounded-xl hover:border-slate-300 dark:hover:border-slate-600"
-                >
-                  <Heart className="w-4 h-4" />
-                  Wishlist
                 </button>
                 
                 <button
@@ -127,6 +118,7 @@ const Navigation: React.FC<NavigationProps> = ({
                 Sign In
               </button>
             )}
+             <ThemeToggle />
           </div>
           
           {/* Mobile Menu Button */}
@@ -153,14 +145,6 @@ const Navigation: React.FC<NavigationProps> = ({
                   >
                     <History className="w-4 h-4" />
                     Collection ({savedCards.length})
-                  </button>
-                  
-                  <button
-                    onClick={() => { setCurrentView('wishlist'); setIsMobileMenuOpen(false); }}
-                    className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg"
-                  >
-                    <Heart className="w-4 h-4" />
-                    Wishlist
                   </button>
                   
                   <button
@@ -199,6 +183,7 @@ const Navigation: React.FC<NavigationProps> = ({
                   Sign In
                 </button>
               )}
+
             </div>
           </div>
         )}
