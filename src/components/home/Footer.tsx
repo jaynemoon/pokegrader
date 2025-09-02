@@ -12,16 +12,21 @@ const Footer: React.FC<FooterProps> = ({ setCurrentView }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-gradient-to- rounded-xl flex items-center justify-center p-1">
+              <button 
+                onClick={() => setCurrentView('home')}
+                className="flex items-center space-x-2 mb-4 hover:opacity-80 transition-opacity"
+              >
+                <div className="w-8 h-8 hover:border-purple-800 hover:shadow-xlg rounded-lg border-radius-lg flex items-center justify-center">
                   <img
                     src={masterballIcon}
-                    alt="masterball icon"
-                    className="w-8 h-8 object-contain"
+                    alt="PokéGrader-icon"
+                    className="w-8 h-8"
                   />
                 </div>
-                <span className="text-xlg font-black text-white">PokéGrader</span>
-              </div>
+                <span className="text-xl font-bold bg-gradient-to-r from-slate-100 to-slate-300 bg-clip-text text-transparent">
+                  PokéGrader
+                </span>
+              </button>
               <p className="text-cyan-100 text-sm mb-6 max-w-md">
                 Professional AI-powered Pokemon card grading with instant results. Get PSA grades for trade price in seconds.
               </p>

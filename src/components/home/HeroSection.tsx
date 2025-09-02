@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowBigRightIcon, Zap, RefreshCw, LucideCircleArrowOutUpRight, LucideArrowUpRight } from 'lucide-react';
+import { Zap, LucideArrowUpRight } from 'lucide-react';
 import { usePokemonCards } from '../../hooks/usePokemonCards';
 import PatternBackground from '../ui/PatternBackgrounds';
 
@@ -12,7 +12,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   fileInputRef,
   handleFileUpload
 }) => {
-  const { cards, loading, error, refreshCards } = usePokemonCards(4);
+  const { cards, loading, error } = usePokemonCards(4);
   return (
     <section className="relative">
       <PatternBackground pattern="dots" opacity={0.1} />
@@ -25,7 +25,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
           <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 dark:from-blue-400 dark:via-purple-400 dark:to-cyan-400 bg-clip-text text-transparent">
-             The Ultimate Pokemon TCG Grade Tool
+             Ultimate Grading Tools for Pokemon Traders
           </span>
         </h1>
         
@@ -34,7 +34,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20">
           <button
             onClick={() => fileInputRef.current?.click()}
             className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-blue-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-200 shadow-lg shadow-blue-600/25 dark:shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-600/40 dark:hover:shadow-blue-500/40 hover:scale-105"
@@ -44,22 +44,20 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           </button>
         </div>
 
-        {/* Live Counter Section */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white px-6 py-3 rounded-full">
-            <Zap className="w-5 h-5 animate-pulse" />
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-medium">Pokemon Cards Graded:</span>
-              <span className="text-lg font-bold tabular-nums">789,664</span>
-            </div>
-            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-          </div>
-        </div>
-
         {/* Random Pokemon Cards Section */}
         <div className="max-w-5xl mx-auto">
-          <div className="flex items-center justify-center gap-3 mb-8">
-            <h3 className="text-xl font-semibold text-slate-900 dark:text-white">Recently Graded Cards</h3>
+          <div className="flex items-center justify-center gap-3 mb-4">
+                        {/* Live Counter Section */}
+            <div className="text-center mb-4">
+              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-800/40 to-rose-800/40 text-white px-6 py-3 rounded-full">
+                <Zap className="w-5 h-5 animate-pulse" />
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-medium">Pokemon Cards Graded:</span>
+                  <span className="text-lg font-bold tabular-nums">789,664</span>
+                </div>
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+              </div>
+            </div>
           </div>
 
           {error && (

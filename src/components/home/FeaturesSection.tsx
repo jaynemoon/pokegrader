@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, DollarSign, BarChart3, CheckCircle, TrendingUp, Zap, Clock, Target } from 'lucide-react';
-import PatternBackground from '../ui/PatternBackgrounds';
 
 const FeaturesSection: React.FC = () => {
   const [animationStep, setAnimationStep] = useState(0);
@@ -333,21 +332,30 @@ const FeaturesSection: React.FC = () => {
   return (
     <section className="py-24 bg-slate-50 dark:bg-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+            Features
+          </h2>
+          <p className="text-xl text-slate-600 dark:text-slate-300">
+            The world's most advanced Pokemon card grading system, trained on 800K+ cards with real-time TCG market data
+          </p>
+        </div>
+
         {/* Stats Section */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto mb-16">
-          <div className="group bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-6 border border-blue-200/50 dark:border-blue-700/50 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+          <div className="group bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-6 border border-blue-200/50 dark:border-blue-700/50 transition-all duration-300 hover:scale-105 hover:shadow-lg text-center">
             <div className="flex justify-center mb-3">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-yellow-500 rounded-full flex items-center justify-center">
                 <Clock className="w-6 h-6 text-white" />
               </div>
             </div>
-            <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent mb-1">
+            <div className="text-3xl font-bold bg-gradient-to-r from-yellow-600 to-yellow-600 dark:from-yellow-400 dark:to-yellow-400 bg-clip-text text-transparent mb-1">
               &lt; 5s
             </div>
             <div className="text-sm font-medium text-slate-600 dark:text-slate-400">Lightning Fast Grading</div>
           </div>
           
-          <div className="group bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-6 border border-purple-200/50 dark:border-purple-700/50 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+          <div className="group bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-6 border border-purple-200/50 dark:border-purple-700/50 transition-all duration-300 hover:scale-105 hover:shadow-lg text-center">
             <div className="flex justify-center mb-3">
               <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
                 <Target className="w-6 h-6 text-white" />
@@ -359,26 +367,17 @@ const FeaturesSection: React.FC = () => {
             <div className="text-sm font-medium text-slate-600 dark:text-slate-400">Precision Accuracy</div>
           </div>
           
-          <div className="group bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl p-6 border border-green-200/50 dark:border-green-700/50 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+          <div className="group bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl p-6 border border-green-200/50 dark:border-green-700/50 transition-all duration-300 hover:scale-105 hover:shadow-lg text-center">
             <div className="flex justify-center mb-3">
               <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
                 <DollarSign className="w-6 h-6 text-white" />
               </div>
             </div>
             <div className="text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-400 dark:to-emerald-400 bg-clip-text text-transparent mb-1">
-              FREE
+              #1
             </div>
-            <div className="text-sm font-medium text-slate-600 dark:text-slate-400">No Grading Fees</div>
+            <div className="text-sm font-medium text-slate-600 dark:text-slate-400">Best Trade Prices</div>
           </div>
-        </div>
-
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-            Pokemon TCG AI Analysis
-          </h2>
-          <p className="text-xl text-slate-600 dark:text-slate-300">
-            The world's most advanced Pokemon card grading system, trained on 800K+ cards with real-time TCG market data
-          </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
