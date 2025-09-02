@@ -1,6 +1,7 @@
 import React from 'react';
-import { ArrowBigRightIcon, Zap, RefreshCw } from 'lucide-react';
+import { ArrowBigRightIcon, Zap, RefreshCw, LucideCircleArrowOutUpRight, LucideArrowUpRight } from 'lucide-react';
 import { usePokemonCards } from '../../hooks/usePokemonCards';
+import PatternBackground from '../ui/PatternBackgrounds';
 
 interface HeroSectionProps {
   fileInputRef: React.RefObject<HTMLInputElement | null>;
@@ -13,8 +14,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 }) => {
   const { cards, loading, error, refreshCards } = usePokemonCards(4);
   return (
-    <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="text-center max-w-4xl mx-auto">
+    <section className="relative">
+      <PatternBackground pattern="dots" opacity={0.1} />
+      <div className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
+        <div className="text-center max-w-4xl mx-auto">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-900/30 border border-blue-200/50 dark:border-blue-700/50 text-blue-700 dark:text-blue-300 text-sm font-medium mb-6">
           <Zap className="w-4 h-4" />
           Instant AI-Powered Grading
@@ -36,24 +39,20 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             onClick={() => fileInputRef.current?.click()}
             className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-blue-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-200 shadow-lg shadow-blue-600/25 dark:shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-600/40 dark:hover:shadow-blue-500/40 hover:scale-105"
           >
-            <ArrowBigRightIcon className="w-5 h-5" />
+            <LucideArrowUpRight className="w-5 h-5" />
             Get Started
           </button>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto mb-16">
-          <div className="text-center">
-            <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">&lt; 5s</div>
-            <div className="text-slate-600 dark:text-slate-400">Grading time</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">95%</div>
-            <div className="text-slate-600 dark:text-slate-400">Accuracy rate</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">$0</div>
-            <div className="text-slate-600 dark:text-slate-400">Grading fees</div>
+        {/* Live Counter Section */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-full">
+            <Zap className="w-5 h-5 animate-pulse" />
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-medium">Pokemon Cards Graded:</span>
+              <span className="text-lg font-bold tabular-nums">789,664</span>
+            </div>
+            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
           </div>
         </div>
 
@@ -61,14 +60,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center justify-center gap-3 mb-8">
             <h3 className="text-xl font-semibold text-slate-900 dark:text-white">Recently Graded Cards</h3>
-            <button
-              onClick={refreshCards}
-              disabled={loading}
-              className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors disabled:opacity-50"
-              title="Refresh cards"
-            >
-              <RefreshCw className={`w-4 h-4 text-slate-600 dark:text-slate-400 ${loading ? 'animate-spin' : ''}`} />
-            </button>
           </div>
 
           {error && (
@@ -122,13 +113,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               ))
             )}
           </div>
-
-          <div className="text-center mt-6">
-            <p className="text-sm text-slate-500 dark:text-slate-400">
-              Live Pokemon TCG cards • Updated every refresh
-            </p>
-          </div>
         </div>
+      </div>
       </div>
 
       {/* Hidden file inputs */}
@@ -139,8 +125,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         onChange={handleFileUpload}
         className="hidden"
       />
-
-      
     </section>
   );
 };

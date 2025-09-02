@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, TrendingUp, Users, CheckCircle, ArrowRight } from 'lucide-react';
+import { Mail, TrendingUp, CheckCircle, ArrowRight } from 'lucide-react';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 
@@ -20,18 +20,6 @@ const NewsletterSection: React.FC = () => {
     setEmail('');
   };
 
-  const stats = [
-    { icon: Users, value: '12,500+', label: 'Subscribers' },
-    { icon: TrendingUp, value: '94%', label: 'Open Rate' },
-    { icon: Mail, value: 'Weekly', label: 'Updates' }
-  ];
-
-  const expertInsights = [
-    "Market trend analysis from top TCG experts",
-    "Price predictions for upcoming sets",
-    "Investment opportunities and hot cards",
-    "Exclusive grading tips and techniques"
-  ];
 
   if (isSubscribed) {
     return (
@@ -66,61 +54,8 @@ const NewsletterSection: React.FC = () => {
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-gradient-to-br from-purple-200/20 to-blue-200/20 dark:from-purple-800/10 dark:to-blue-800/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left side - Content */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
-                <Mail className="w-4 h-4 text-white" />
-              </div>
-              <span className="text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full">
-                Market Experts Newsletter
-              </span>
-            </div>
-
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-6">
-              Stay Ahead of the{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">
-                Market Trends
-              </span>
-            </h2>
-
-            <p className="text-xl text-slate-600 dark:text-slate-300 mb-8">
-              Get weekly insights from TCG market experts, price predictions, and exclusive 
-              analysis delivered straight to your inbox. Join thousands of collectors making 
-              smarter investment decisions.
-            </p>
-
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 mb-8">
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="w-12 h-12 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 rounded-xl flex items-center justify-center mx-auto mb-2">
-                    <stat.icon className="w-6 h-6 text-slate-600 dark:text-slate-300" />
-                  </div>
-                  <div className="text-2xl font-bold text-slate-900 dark:text-white">{stat.value}</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-400">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-
-            {/* What you'll get */}
-            <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-2xl p-6 mb-8">
-              <h3 className="font-semibold text-slate-900 dark:text-white mb-4">What you'll receive:</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {expertInsights.map((insight, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                    <span className="text-slate-700 dark:text-slate-300 text-sm">{insight}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Right side - Newsletter form */}
-          <div className="lg:pl-8">
+      <div className="max-w-lg mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div>
             <div className="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-200/50 dark:border-slate-700 transition-colors">
               <div className="text-center mb-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -193,7 +128,6 @@ const NewsletterSection: React.FC = () => {
                 </span>
               </div>
             </div>
-          </div>
         </div>
       </div>
     </section>

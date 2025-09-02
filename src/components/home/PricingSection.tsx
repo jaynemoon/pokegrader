@@ -1,5 +1,6 @@
 import React from 'react';
 import { CheckCircle, Shield } from 'lucide-react';
+import PatternBackground from '../ui/PatternBackgrounds';
 
 interface PricingSectionProps {
   onUpgradeClick?: () => void;
@@ -7,8 +8,9 @@ interface PricingSectionProps {
 
 const PricingSection: React.FC<PricingSectionProps> = ({ onUpgradeClick }) => {
   return (
-    <section className="py-24 bg-white dark:bg-slate-900 transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-800 transition-colors relative">
+      <PatternBackground pattern="dots" opacity={0.1} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">
             Choose your plan

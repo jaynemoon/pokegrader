@@ -170,7 +170,7 @@ export const usePokemonCards = (cardCount: number = 4) => {
       // Use fallback cards and shuffle them
       const shuffledFallback = [...fallbackCards].sort(() => 0.5 - Math.random()).slice(0, cardCount);
       setCards(shuffledFallback);
-      setError('Using offline card data');
+      setError(null);
     } finally {
       setLoading(false);
     }
