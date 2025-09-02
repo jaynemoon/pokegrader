@@ -12,6 +12,7 @@ import { generateMockPriceData } from './utils/mockData';
 // Import to force dark mode classes inclusion
 import { DarkModeClasses } from './components/ui/DarkModeClasses';
 import pikachuFirstImage from './assets/pikachu-first.png';
+import userDemoImage from './assets/user-demo.png';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewType>('home');
@@ -99,8 +100,8 @@ const App: React.FC = () => {
     const mockUser: User = {
       id: Date.now(),
       email: authForm.email,
-      name: authMode === 'signup' ? authForm.name : authForm.email.split('@')[0],
-      avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${authForm.email}`,
+      name: authForm.email === 'demo@pokegrade.ai' ? 'Trader' : (authMode === 'signup' ? authForm.name : authForm.email.split('@')[0]),
+      avatar: authForm.email === 'demo@pokegrade.ai' ? userDemoImage : `https://api.dicebear.com/7.x/avataaars/svg?seed=${authForm.email}`,
       isPro: authForm.email === 'demo@pokegrade.ai', // Demo user gets Pro
       freeAnalysesRemaining: 5,
       subscriptionExpiresAt: authForm.email === 'demo@pokegrade.ai' ? '2025-12-31' : undefined

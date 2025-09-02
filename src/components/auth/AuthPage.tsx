@@ -4,6 +4,7 @@ import Button from '../ui/Button';
 import Input from '../ui/Input';
 import Card from '../ui/Card';
 import DottedBackground from '../ui/DottedBackground';
+import pikaImage from '../../assets/pika.png';
 import type { ViewType, AuthForm, AuthMode } from '../../types';
 
 interface AuthPageProps {
@@ -30,23 +31,33 @@ const AuthPage: React.FC<AuthPageProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative transition-colors">
       <DottedBackground opacity={0.02} />
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         {/* Back button */}
         <button
           onClick={() => setCurrentView('home')}
-          className="flex items-center text-slate-600 hover:text-slate-900 mb-6"
+          className="flex items-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 mb-6 transition-colors"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Home
         </button>
 
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-slate-900">
+          {/* Pika Image */}
+          <div className="flex justify-center mb-6">
+            <img 
+              src={pikaImage} 
+              alt="Pikachu" 
+              className="w-24 h-24 object-contain drop-shadow-xl animate-bounce"
+              style={{ animationDuration: '3s' }}
+            />
+          </div>
+          
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
             {authMode === 'signin' ? 'Sign In' : 'Sign Up'}
           </h2>
-          <p className="text-slate-600 mt-2">
+          <p className="text-slate-600 dark:text-slate-400 mt-2 transition-colors">
             {authMode === 'signin' 
               ? 'Welcome back to PokéGrader' 
               : 'Create your PokéGrader account'
@@ -101,7 +112,7 @@ const AuthPage: React.FC<AuthPageProps> = ({
                 <div className="w-full border-t border-slate-300" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-slate-500">
+                <span className="px-2 bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 transition-colors">
                   {authMode === 'signin' ? "Don't have an account?" : 'Already have an account?'}
                 </span>
               </div>
@@ -119,14 +130,14 @@ const AuthPage: React.FC<AuthPageProps> = ({
           </div>
 
           {/* Demo account info */}
-          <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <h4 className="text-sm font-medium text-blue-900 mb-2">Trainer Account</h4>
-            <p className="text-sm text-blue-700 mb-2">
+          <div className="mt-6 p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200 dark:border-purple-700 rounded-lg transition-colors">
+            <h4 className="text-sm font-medium text-purple-900 dark:text-purple-300 mb-2">✨ Trainer Account</h4>
+            <p className="text-sm text-purple-700 dark:text-purple-400 mb-2">
               Try the app with our trainer account:
             </p>
-            <div className="text-sm text-blue-600 space-y-1">
-              <div>Email: demo@pokegrade.ai</div>
-              <div>Password: pikapika</div>
+            <div className="text-sm text-purple-600 dark:text-purple-400 space-y-1 font-mono">
+              <div>📧 Email: demo@pokegrade.ai</div>
+              <div>🔑 Password: pikapika</div>
             </div>
           </div>
         </Card>

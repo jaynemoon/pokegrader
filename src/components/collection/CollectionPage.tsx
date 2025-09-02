@@ -184,8 +184,8 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
         {/* Page Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-slate-900 mb-2">My Collection</h1>
-            <p className="text-slate-600">
+            <h1 className="text-3xl font-bold dark:text-slate-900 mb-2">My Collection</h1>
+            <p className="dark:text-slate-600">
               Manage and track your graded Pokemon cards
             </p>
           </div>
@@ -203,8 +203,8 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
             onClick={() => setActiveView('grid')}
             className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
               activeView === 'grid'
-                ? 'bg-white text-slate-900 shadow-sm'
-                : 'text-slate-600 hover:text-slate-900'
+                ? 'dark:bg-white dark:text-slate-900 shadow-sm'
+                : 'dark:text-slate-600 dark:hover:text-slate-900'
             }`}
           >
             Collection
