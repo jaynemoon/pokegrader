@@ -16,7 +16,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section className="relative">
       <PatternBackground pattern="dots" opacity={0.1} />
-      <div className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
+      <div className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
         <div className="text-center max-w-4xl mx-auto">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-900/30 border border-blue-200/50 dark:border-blue-700/50 text-blue-700 dark:text-blue-300 text-sm font-medium mb-6">
           <Zap className="w-4 h-4" />
@@ -25,12 +25,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
           <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 dark:from-blue-400 dark:via-purple-400 dark:to-cyan-400 bg-clip-text text-transparent">
-             Ultimate Grading Tools for Pokemon Traders
+             Ultimate Grading Tool for Pokemon Traders
           </span>
         </h1>
         
         <p className="text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-          Get PSA-level grading in seconds using advanced AI analysis. Skip the months-long wait and expensive fees with our advanced AI analysis.
+          Get PSA-level grading in seconds using advanced AI analysis and skip the months-long wait and expensive fees.
         </p>
 
         {/* CTA Buttons */}
@@ -48,14 +48,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center justify-center gap-3 mb-4">
                         {/* Live Counter Section */}
-            <div className="text-center mb-4">
-              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-800/40 to-rose-800/40 text-white px-6 py-3 rounded-full">
-                <Zap className="w-5 h-5 animate-pulse" />
+            <div className="text-center mb-1">
+              <div className="inline-flex items-center gap-3 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-6 py-3 rounded-full border border-slate-200 dark:border-slate-700">
+                <Zap className="w-5 h-5 animate-pulse text-slate-500 dark:text-slate-400" />
                 <div className="flex items-center gap-2">
                   <span className="text-sm font-medium">Pokemon Cards Graded:</span>
                   <span className="text-lg font-bold tabular-nums">789,664</span>
                 </div>
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                <div className="w-2 h-2 bg-green-500 dark:bg-green-400 rounded-full animate-pulse" />
               </div>
             </div>
           </div>
@@ -110,6 +110,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 </div>
               ))
             )}
+            
           </div>
         </div>
       </div>

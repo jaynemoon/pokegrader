@@ -1,12 +1,13 @@
 import React from 'react';
 import { CheckCircle, Shield } from 'lucide-react';
 import PatternBackground from '../ui/PatternBackgrounds';
+import type { ViewType } from '../../types';
 
 interface PricingSectionProps {
-  onUpgradeClick?: () => void;
+  setCurrentView: (view: ViewType) => void;
 }
 
-const PricingSection: React.FC<PricingSectionProps> = ({ onUpgradeClick }) => {
+const PricingSection: React.FC<PricingSectionProps> = ({ setCurrentView }) => {
   return (
     <section className="py-24 bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-800 transition-colors relative">
       <PatternBackground pattern="dots" opacity={0.1} />
@@ -16,7 +17,7 @@ const PricingSection: React.FC<PricingSectionProps> = ({ onUpgradeClick }) => {
             Choose your plan
           </h2>
           <p className="text-xl text-slate-600 dark:text-slate-300">
-             Get 2 free credits when you get a start plan of 8 credits(total 10 for first month), for new members only. You can add credits and pay-as-you-go, or unlock unlimited grading with the pro collection plan
+             Get credits and pay-as-you-go, or unlock unlimited grading with the pro collection plan
           </p>
         </div>
 
@@ -53,7 +54,10 @@ const PricingSection: React.FC<PricingSectionProps> = ({ onUpgradeClick }) => {
             </ul>
 
             <div className="mt-auto">
-              <button className="w-full bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 px-6 py-3 rounded-2xl font-semibold transition-all duration-200">
+              <button 
+                onClick={() => setCurrentView('auth')}
+                className="w-full bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 px-6 py-3 rounded-2xl font-semibold transition-all duration-200"
+              >
                 Get Started
               </button>
               
@@ -105,7 +109,7 @@ const PricingSection: React.FC<PricingSectionProps> = ({ onUpgradeClick }) => {
 
             <div className="mt-auto">
               <button 
-                onClick={onUpgradeClick}
+                onClick={() => setCurrentView('auth')}
                 className="w-full bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-500 dark:to-pink-500 hover:from-purple-700 hover:to-pink-700 dark:hover:from-purple-600 dark:hover:to-pink-600 text-white px-6 py-3 rounded-2xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 Upgrade to Pro

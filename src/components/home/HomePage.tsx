@@ -4,7 +4,7 @@ import DottedBackground from '../ui/DottedBackground';
 import HeroSection from './HeroSection';
 import FeaturesSection from './FeaturesSection';
 import PricingSection from './PricingSection';
-import NewsletterSection from './NewsletterSection';
+// import NewsletterSection from './NewsletterSection';
 import Footer from './Footer';
 import type { User, SavedCard, ViewType } from '../../types';
 
@@ -43,8 +43,8 @@ const HomePage: React.FC<HomePageProps> = ({
       />
       
       <FeaturesSection />
-      <PricingSection onUpgradeClick={() => setCurrentView('upgrade')} />
-      <NewsletterSection />
+      <PricingSection setCurrentView={setCurrentView} />
+      {/* <NewsletterSection /> */}
       <Footer setCurrentView={setCurrentView} />
     </div>
   );

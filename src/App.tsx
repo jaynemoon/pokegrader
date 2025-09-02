@@ -43,7 +43,7 @@ const App: React.FC = () => {
     // Check if user can analyze (Pro or has free analyses remaining)
     if (user && !user.isPro && user.freeAnalysesRemaining <= 0) {
       alert('You\'ve reached your free analysis limit. Upgrade to Pro for unlimited analyses!');
-      setCurrentView('upgrade');
+      setCurrentView('auth');
       return;
     }
 

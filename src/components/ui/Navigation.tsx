@@ -74,7 +74,7 @@ const Navigation: React.FC<NavigationProps> = ({
             
             {user && !user.isPro && (
               <button
-                onClick={() => setCurrentView('upgrade')}
+                onClick={() => setCurrentView('auth')}
                 className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 <Crown className="w-4 h-4" />
@@ -185,7 +185,7 @@ const Navigation: React.FC<NavigationProps> = ({
                   
                   {!user.isPro && (
                     <button
-                      onClick={() => { setCurrentView('upgrade'); setIsMobileMenuOpen(false); }}
+                      onClick={() => { setCurrentView('auth'); setIsMobileMenuOpen(false); }}
                       className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg"
                     >
                       <Crown className="w-4 h-4" />

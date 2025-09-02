@@ -23,14 +23,6 @@ const UpgradePage: React.FC<UpgradePageProps> = ({
 }) => {
   const [isProcessing, setIsProcessing] = useState(false);
 
-  const handleUpgradeClick = async () => {
-    setIsProcessing(true);
-    // Simulate payment processing
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    onUpgrade();
-    setIsProcessing(false);
-    setCurrentView('home');
-  };
 
   const freeFeatures = [
     { icon: Star, text: '5 free card grades per month' },
@@ -126,7 +118,7 @@ const UpgradePage: React.FC<UpgradePageProps> = ({
                   </p>
                 </div>
               </div>
-              <Button onClick={handleUpgradeClick} loading={isProcessing}>
+              <Button onClick={() => setCurrentView('auth')}>
                 Upgrade Now
               </Button>
             </div>
@@ -197,8 +189,7 @@ const UpgradePage: React.FC<UpgradePageProps> = ({
               </div>
             ) : (
               <Button 
-                onClick={handleUpgradeClick}
-                loading={isProcessing}
+                onClick={() => setCurrentView('auth')}
                 className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700"
                 size="lg"
               >

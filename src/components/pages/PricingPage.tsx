@@ -19,13 +19,12 @@ const PricingPage: React.FC<PricingPageProps> = ({
   handleSignOut,
   onUpgrade
 }) => {
-  const freeFeatures = [
-    '5 free card analyses per month',
-    'Basic grade assessment',
-    'Instant results',
-    'Market value estimates',
-    'Save up to 10 cards',
-    'Community support'
+  const starterFeatures = [
+    '8 credit grades per month',
+    'Basic market pricing',
+    'Pay-as-you-go booster credits',
+    'Customer support',
+    'New members only'
   ];
 
   const proFeatures = [
@@ -41,10 +40,6 @@ const PricingPage: React.FC<PricingPageProps> = ({
     'Early access to new features'
   ];
 
-  const handleUpgrade = () => {
-    onUpgrade();
-    setCurrentView('home');
-  };
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 relative">
@@ -78,27 +73,28 @@ const PricingPage: React.FC<PricingPageProps> = ({
 
         {/* Pricing Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
-          {/* Free Plan */}
+          {/* Starter Plan */}
           <div className="bg-white dark:bg-slate-800 rounded-3xl p-8 border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all duration-300">
             <div className="flex items-center mb-6">
               <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mr-4">
                 <Zap className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Free</h3>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Starter</h3>
                 <p className="text-slate-600 dark:text-slate-400">Perfect for getting started</p>
               </div>
             </div>
             
             <div className="mb-6">
               <div className="flex items-baseline">
-                <span className="text-4xl font-bold text-slate-900 dark:text-white">$0</span>
-                <span className="text-slate-600 dark:text-slate-400 ml-2">forever</span>
+                <span className="text-4xl font-bold text-slate-900 dark:text-white">$3</span>
+                <span className="text-slate-600 dark:text-slate-400 ml-2">/month</span>
               </div>
+              <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">+ 2 free credits (10 total)</p>
             </div>
 
             <ul className="space-y-4 mb-8">
-              {freeFeatures.map((feature, index) => (
+              {starterFeatures.map((feature, index) => (
                 <li key={index} className="flex items-center">
                   <Check className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
                   <span className="text-slate-700 dark:text-slate-300">{feature}</span>
@@ -110,7 +106,7 @@ const PricingPage: React.FC<PricingPageProps> = ({
               onClick={() => setCurrentView('auth')}
               className="w-full bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-600 hover:bg-slate-200 dark:hover:bg-slate-600 px-6 py-3 rounded-xl font-semibold transition-colors"
             >
-              Get Started Free
+              Get Started
             </button>
           </div>
 
@@ -135,7 +131,7 @@ const PricingPage: React.FC<PricingPageProps> = ({
             
             <div className="mb-6">
               <div className="flex items-baseline">
-                <span className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">$19</span>
+                <span className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">$20</span>
                 <span className="text-slate-600 dark:text-slate-400 ml-2">/month</span>
               </div>
               <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Cancel anytime</p>
@@ -151,7 +147,7 @@ const PricingPage: React.FC<PricingPageProps> = ({
             </ul>
 
             <button
-              onClick={handleUpgrade}
+              onClick={() => setCurrentView('auth')}
               className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               Upgrade to Pro

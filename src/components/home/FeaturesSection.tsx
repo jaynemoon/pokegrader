@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Shield, DollarSign, BarChart3, CheckCircle, TrendingUp, Zap, Clock, Target } from 'lucide-react';
+import { Shield, DollarSign, BarChart3, CheckCircle, TrendingUp, Clock, Target } from 'lucide-react';
 
 const FeaturesSection: React.FC = () => {
   const [animationStep, setAnimationStep] = useState(0);
