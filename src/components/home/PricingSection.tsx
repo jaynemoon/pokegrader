@@ -27,7 +27,7 @@ const PricingSection: React.FC<PricingSectionProps> = ({ setCurrentView }) => {
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Starter</h3>
               <div className="text-5xl font-bold text-slate-900 dark:text-white mb-2">$3</div>
-              <p className="text-slate-600 dark:text-slate-400">*2 free credits + 8 base credits per month</p>
+              <p className="text-slate-600 dark:text-slate-400">*2 free credits</p>
             </div>
             
             <ul className="space-y-4 mb-8 flex-grow">

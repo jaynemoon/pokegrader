@@ -2,6 +2,7 @@ import React from 'react';
 import { Zap, LucideArrowUpRight } from 'lucide-react';
 import { usePokemonCards } from '../../hooks/usePokemonCards';
 import PatternBackground from '../ui/PatternBackgrounds';
+import pikaImage from '../../assets/pika.png';
 
 interface HeroSectionProps {
   fileInputRef: React.RefObject<HTMLInputElement | null>;
@@ -18,6 +19,15 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       <PatternBackground pattern="dots" opacity={0.1} />
       <div className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
         <div className="text-center max-w-4xl mx-auto">
+        {/* Pikachu Image */}
+        <div className="mb-8">
+          <img
+            src={pikaImage}
+            alt="Pikachu"
+            className="w-32 h-32 mx-auto object-contain"
+          />
+        </div>
+        
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-900/30 border border-blue-200/50 dark:border-blue-700/50 text-blue-700 dark:text-blue-300 text-sm font-medium mb-6">
           <Zap className="w-4 h-4" />
           Instant AI-Powered Grading
@@ -37,7 +47,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20">
           <button
             onClick={() => fileInputRef.current?.click()}
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-blue-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-200 shadow-lg shadow-blue-600/25 dark:shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-600/40 dark:hover:shadow-blue-500/40 hover:scale-105"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-600 to-teal-600 hover:from-cyan-700 hover:to-teal-700 dark:from-cyan-500 dark:to-teal-500 dark:hover:from-teal-600 dark:hover:to-cyan-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-200 shadow-lg shadow-blue-600/25 dark:shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-600/40 dark:hover:shadow-blue-500/40 hover:scale-105"
           >
             <LucideArrowUpRight className="w-5 h-5" />
             Get Started
