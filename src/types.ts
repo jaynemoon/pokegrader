@@ -140,5 +140,5 @@ export interface AROverlay {
   };
 }
 
-export type ViewType = 'home' | 'analysis' | 'collection' | 'auth' | 'upgrade' | 'wishlist' | 'market' | 'settings';
+export type ViewType = 'home' | 'analysis' | 'collection' | 'auth' | 'upgrade' | 'wishlist' | 'market' | 'settings' | 'support' | 'privacy' | 'terms' | 'features' | 'pricing';
 export type AuthMode = 'signin' | 'signup';

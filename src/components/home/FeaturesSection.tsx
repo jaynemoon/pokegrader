@@ -147,7 +147,7 @@ const FeaturesSection: React.FC = () => {
             {/* Price header */}
             <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-lg p-3 mb-4 shadow-md">
               <div className="flex items-center justify-between mb-2">
-                <div className="text-sm font-bold text-slate-800">Charizard Base Set PSA 10</div>
+                <div className="text-sm font-bold dark:text-slate-800">Charizard Base Set PSA 10</div>
                 <div className="flex items-center bg-gradient-to-r from-emerald-500 to-green-500 text-white px-2 py-1 rounded-full">
                   <TrendingUp className="w-3 h-3 mr-1" />
                   <span className="text-xs font-bold">+24.3%</span>

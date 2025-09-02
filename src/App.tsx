@@ -8,6 +8,11 @@ import UpgradePage from './components/upgrade/UpgradePage';
 import WishlistPage from './components/wishlist/WishlistPage';
 import MarketPage from './components/market/MarketPage';
 import BarcodeScanner from './components/mobile/BarcodeScanner';
+import SupportPage from './components/legal/SupportPage';
+import PrivacyPage from './components/legal/PrivacyPage';
+import TermsPage from './components/legal/TermsPage';
+import FeaturesPage from './components/pages/FeaturesPage';
+import PricingPage from './components/pages/PricingPage';
 import { generateMockPriceData } from './utils/mockData';
 // Import to force dark mode classes inclusion
 import { DarkModeClasses } from './components/ui/DarkModeClasses';
@@ -277,6 +282,21 @@ const App: React.FC = () => {
       break;
     case 'upgrade':
       currentComponent = <UpgradePage {...appProps} />;
+      break;
+    case 'support':
+      currentComponent = <SupportPage {...appProps} />;
+      break;
+    case 'privacy':
+      currentComponent = <PrivacyPage {...appProps} />;
+      break;
+    case 'terms':
+      currentComponent = <TermsPage {...appProps} />;
+      break;
+    case 'features':
+      currentComponent = <FeaturesPage {...appProps} />;
+      break;
+    case 'pricing':
+      currentComponent = <PricingPage {...appProps} />;
       break;
     default:
       currentComponent = <HomePage {...appProps} />;

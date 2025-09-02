@@ -260,7 +260,7 @@ const MarketPage: React.FC<MarketPageProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 relative">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 relative">
       <DottedBackground opacity={0.02} />
       
       <Navigation
@@ -272,12 +272,12 @@ const MarketPage: React.FC<MarketPageProps> = ({
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-slate-900 mb-2">Market Intelligence</h1>
-          <p className="text-slate-600">Track market trends, price alerts, and investment performance</p>
+          <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">Market Intelligence</h1>
+          <p className="text-slate-600 dark:text-slate-300">Track market trends, price alerts, and investment performance</p>
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex space-x-1 mb-8 bg-slate-200 p-1 rounded-lg w-fit">
+        <div className="flex space-x-1 mb-8 bg-slate-200 dark:bg-slate-700 p-1 rounded-lg w-fit">
           {[
             { id: 'trends', label: 'Prices' },
             { id: 'alerts', label: 'Alerts' },
@@ -288,8 +288,8 @@ const MarketPage: React.FC<MarketPageProps> = ({
               onClick={() => setActiveTab(tab.id as typeof activeTab)}
               className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                 activeTab === tab.id
-                  ? 'bg-white text-slate-900 shadow-sm'
-                  : 'text-slate-600 hover:text-slate-900'
+                  ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm'
+                  : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               {tab.label}
@@ -304,8 +304,8 @@ const MarketPage: React.FC<MarketPageProps> = ({
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <Card>
                 <div className="p-4">
-                  <h3 className="text-sm font-medium text-slate-500">Market Cap</h3>
-                  <p className="text-2xl font-bold text-slate-900">${marketSummary.totalMarketCap}B</p>
+                  <h3 className="text-sm font-medium text-slate-500 dark:text-slate-400">Market Cap</h3>
+                  <p className="text-2xl font-bold text-slate-900 dark:text-white">${marketSummary.totalMarketCap}B</p>
                   <p className={`text-xs font-medium ${getChangeColor(marketSummary.avgPriceChange24h)}`}>
                     {marketSummary.avgPriceChange24h > 0 ? '+' : ''}{marketSummary.avgPriceChange24h}% (24h)
                   </p>
@@ -314,16 +314,16 @@ const MarketPage: React.FC<MarketPageProps> = ({
               
               <Card>
                 <div className="p-4">
-                  <h3 className="text-sm font-medium text-slate-500">24h Volume</h3>
-                  <p className="text-2xl font-bold text-slate-900">{marketSummary.totalVolume}</p>
-                  <p className="text-xs text-slate-600">sales across platforms</p>
+                  <h3 className="text-sm font-medium text-slate-500 dark:text-slate-400">24h Volume</h3>
+                  <p className="text-2xl font-bold text-slate-900 dark:text-white">{marketSummary.totalVolume}</p>
+                  <p className="text-xs text-slate-600 dark:text-slate-400">sales across platforms</p>
                 </div>
               </Card>
 
               <Card>
                 <div className="p-4">
-                  <h3 className="text-sm font-medium text-slate-500">Top Gainer</h3>
-                  <p className="text-sm font-semibold text-slate-900 truncate">{marketSummary.topGainer}</p>
+                  <h3 className="text-sm font-medium text-slate-500 dark:text-slate-400">Top Gainer</h3>
+                  <p className="text-sm font-semibold text-slate-900 dark:text-white truncate">{marketSummary.topGainer}</p>
                   <p className={`text-xs font-medium ${getChangeColor(marketSummary.topGainerChange)}`}>
                     +{marketSummary.topGainerChange}%
                   </p>
@@ -332,9 +332,9 @@ const MarketPage: React.FC<MarketPageProps> = ({
 
               <Card>
                 <div className="p-4">
-                  <h3 className="text-sm font-medium text-slate-500">Active Listings</h3>
-                  <p className="text-2xl font-bold text-slate-900">{marketSummary.activeListings.toLocaleString()}</p>
-                  <p className="text-xs text-slate-600">across all platforms</p>
+                  <h3 className="text-sm font-medium text-slate-500 dark:text-slate-400">Active Listings</h3>
+                  <p className="text-2xl font-bold text-slate-900 dark:text-white">{marketSummary.activeListings.toLocaleString()}</p>
+                  <p className="text-xs text-slate-600 dark:text-slate-400">across all platforms</p>
                 </div>
               </Card>
             </div>
@@ -345,8 +345,8 @@ const MarketPage: React.FC<MarketPageProps> = ({
                 <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
                   <div className="flex flex-wrap gap-3">
                     <div className="flex items-center gap-2">
-                      <span className="text-sm text-slate-600">Sort by:</span>
-                      <select className="text-sm border border-slate-300 rounded-md px-2 py-1 bg-white">
+                      <span className="text-sm text-slate-600 dark:text-slate-300">Sort by:</span>
+                      <select className="text-sm border border-slate-300 dark:border-slate-600 rounded-md px-2 py-1 bg-white dark:bg-slate-800 dark:text-white">
                         <option>24h Change</option>
                         <option>Price</option>
                         <option>Volume</option>
@@ -354,8 +354,8 @@ const MarketPage: React.FC<MarketPageProps> = ({
                       </select>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-sm text-slate-600">Filter:</span>
-                      <select className="text-sm border border-slate-300 rounded-md px-2 py-1 bg-white">
+                      <span className="text-sm text-slate-600 dark:text-slate-300">Filter:</span>
+                      <select className="text-sm border border-slate-300 dark:border-slate-600 rounded-md px-2 py-1 bg-white dark:bg-slate-800 dark:text-white">
                         <option>All Sets</option>
                         <option>Base Set</option>
                         <option>Gold Stars</option>
@@ -364,7 +364,7 @@ const MarketPage: React.FC<MarketPageProps> = ({
                       </select>
                     </div>
                   </div>
-                  <div className="text-sm text-slate-500">
+                  <div className="text-sm text-slate-500 dark:text-slate-400">
                     Showing {marketTrends.length} trending cards
                   </div>
                 </div>
@@ -374,7 +374,7 @@ const MarketPage: React.FC<MarketPageProps> = ({
             {/* Trending Cards Table */}
             <Card>
               <div className="p-6">
-                <h3 className="text-lg font-semibold text-slate-900 mb-6">Trending Pokemon Cards</h3>
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-6">Trending Pokemon Cards</h3>
                 <div className="space-y-4">
                   {marketTrends.map((trend, index) => (
                     <div key={`${trend.cardName}-${trend.set}`} className="border-b border-slate-100 pb-4 last:border-b-0">
@@ -384,39 +384,39 @@ const MarketPage: React.FC<MarketPageProps> = ({
                             #{index + 1}
                           </div>
                           <div>
-                            <h4 className="font-semibold text-slate-900">{trend.cardName}</h4>
-                            <p className="text-sm text-slate-600">{trend.set}</p>
+                            <h4 className="font-semibold text-slate-900 dark:text-white">{trend.cardName}</h4>
+                            <p className="text-sm text-slate-600 dark:text-slate-300">{trend.set}</p>
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="font-bold text-xl text-slate-900">
+                          <p className="font-bold text-xl text-slate-900 dark:text-white">
                             ${trend.currentPrice.toLocaleString()}
                           </p>
-                          <p className="text-xs text-slate-500">{trend.volume24h} sales (24h)</p>
+                          <p className="text-xs text-slate-500 dark:text-slate-400">{trend.volume24h} sales (24h)</p>
                         </div>
                       </div>
                       
                       <div className="flex flex-wrap gap-6 mt-4 ml-10">
                         <div className="flex items-center">
-                          <span className="text-sm text-slate-600 mr-2">24h:</span>
+                          <span className="text-sm text-slate-600 dark:text-slate-300 mr-2">24h:</span>
                           <span className={`flex items-center font-semibold ${getChangeColor(trend.priceChange24h)}`}>
                             {getChangeIcon(trend.priceChange24h)} {Math.abs(trend.priceChange24h).toFixed(1)}%
                           </span>
                         </div>
                         <div className="flex items-center">
-                          <span className="text-sm text-slate-600 mr-2">7d:</span>
+                          <span className="text-sm text-slate-600 dark:text-slate-300 mr-2">7d:</span>
                           <span className={`flex items-center font-semibold ${getChangeColor(trend.priceChangeWeek)}`}>
                             {getChangeIcon(trend.priceChangeWeek)} {Math.abs(trend.priceChangeWeek).toFixed(1)}%
                           </span>
                         </div>
                         <div className="flex items-center">
-                          <span className="text-sm text-slate-600 mr-2">30d:</span>
+                          <span className="text-sm text-slate-600 dark:text-slate-300 mr-2">30d:</span>
                           <span className={`flex items-center font-semibold ${getChangeColor(trend.priceChangeMonth)}`}>
                             {getChangeIcon(trend.priceChangeMonth)} {Math.abs(trend.priceChangeMonth).toFixed(1)}%
                           </span>
                         </div>
                         <div className="flex items-center">
-                          <span className="text-sm text-slate-600 mr-2">Vol:</span>
+                          <span className="text-sm text-slate-600 dark:text-slate-300 mr-2">Vol:</span>
                           <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                             trend.volume24h > 20 ? 'bg-green-100 text-green-700' :
                             trend.volume24h > 10 ? 'bg-yellow-100 text-yellow-700' :
@@ -435,13 +435,13 @@ const MarketPage: React.FC<MarketPageProps> = ({
             {/* Market Insights */}
             <Card>
               <div className="p-6">
-                <h3 className="text-lg font-semibold text-slate-900 mb-4">Market Insights</h3>
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Market Insights</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-medium text-slate-900 mb-3">🔥 Hot Categories</h4>
+                    <h4 className="font-medium text-slate-900 dark:text-white mb-3">🔥 Hot Categories</h4>
                     <div className="space-y-2">
                       <div className="flex justify-between items-center">
-                        <span className="text-sm text-slate-600">Gold Star Cards</span>
+                        <span className="text-sm text-slate-600 dark:text-slate-300">Gold Star Cards</span>
                         <span className="text-sm font-semibold text-green-600">+18.4%</span>
                       </div>
                       <div className="flex justify-between items-center">
@@ -459,8 +459,8 @@ const MarketPage: React.FC<MarketPageProps> = ({
                     </div>
                   </div>
                   <div>
-                    <h4 className="font-medium text-slate-900 mb-3">📊 Market Analysis</h4>
-                    <div className="text-sm text-slate-600 space-y-2">
+                    <h4 className="font-medium text-slate-900 dark:text-white mb-3">📊 Market Analysis</h4>
+                    <div className="text-sm text-slate-600 dark:text-slate-300 space-y-2">
                       <p>• Vintage cards continue to outperform modern releases</p>
                       <p>• PSA 10 grades showing 25% premium over PSA 9</p>
                       <p>• Japanese market influence growing significantly</p>
@@ -477,7 +477,7 @@ const MarketPage: React.FC<MarketPageProps> = ({
         {activeTab === 'alerts' && (
           <div className="space-y-6">
             <div className="flex justify-between items-center">
-              <h3 className="text-lg font-semibold text-slate-900">Price Alerts</h3>
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Price Alerts</h3>
               <Button onClick={addPriceAlert} variant="primary">
                 Add Alert
               </Button>
@@ -486,7 +486,7 @@ const MarketPage: React.FC<MarketPageProps> = ({
             {priceAlerts.length === 0 ? (
               <Card>
                 <div className="p-8 text-center">
-                  <p className="text-slate-600 mb-4">No price alerts set</p>
+                  <p className="text-slate-600 dark:text-slate-300 mb-4">No price alerts set</p>
                   <Button onClick={addPriceAlert} variant="primary">
                     Create Your First Alert
                   </Button>
@@ -498,11 +498,11 @@ const MarketPage: React.FC<MarketPageProps> = ({
                   <Card key={alert.id}>
                     <div className="p-4 flex justify-between items-center">
                       <div>
-                        <h4 className="font-medium text-slate-900">{alert.cardName}</h4>
-                        <p className="text-sm text-slate-600">
+                        <h4 className="font-medium text-slate-900 dark:text-white">{alert.cardName}</h4>
+                        <p className="text-sm text-slate-600 dark:text-slate-300">
                           Alert when price goes {alert.condition} ${alert.targetPrice}
                         </p>
-                        <p className="text-xs text-slate-500">Created: {alert.dateCreated}</p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400">Created: {alert.dateCreated}</p>
                       </div>
                       <div className="flex items-center space-x-3">
                         <span className={`px-2 py-1 rounded-md text-xs font-medium ${
@@ -539,8 +539,8 @@ const MarketPage: React.FC<MarketPageProps> = ({
         {activeTab === 'investment' && (
           <div className="space-y-6">
             <div className="mb-6">
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">Where to Sell Your Pokemon Cards</h3>
-              <p className="text-slate-600">Compare prices across major marketplaces for popular Pokemon cards</p>
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Where to Sell Your Pokemon Cards</h3>
+              <p className="text-slate-600 dark:text-slate-300">Compare prices across major marketplaces for popular Pokemon cards</p>
             </div>
 
             <div className="space-y-6">
@@ -549,8 +549,8 @@ const MarketPage: React.FC<MarketPageProps> = ({
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-4">
                       <div>
-                        <h4 className="text-xl font-bold text-slate-900">{cardData.cardName}</h4>
-                        <p className="text-slate-600">Grade {cardData.grade} • PSA Certified</p>
+                        <h4 className="text-xl font-bold text-slate-900 dark:text-white">{cardData.cardName}</h4>
+                        <p className="text-slate-600 dark:text-slate-300">Grade {cardData.grade} • PSA Certified</p>
                       </div>
                     </div>
 
@@ -561,10 +561,10 @@ const MarketPage: React.FC<MarketPageProps> = ({
                           <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
                             <span className="text-white font-bold text-xs">eB</span>
                           </div>
-                          <h5 className="font-semibold text-slate-900">eBay</h5>
+                          <h5 className="font-semibold text-slate-900 dark:text-white">eBay</h5>
                         </div>
-                        <p className="text-2xl font-bold text-slate-900 mb-1">${cardData.prices.ebay.price.toLocaleString()}</p>
-                        <p className="text-xs text-slate-600">Last sold: {cardData.prices.ebay.lastSold}</p>
+                        <p className="text-2xl font-bold text-slate-900 dark:text-white mb-1">${cardData.prices.ebay.price.toLocaleString()}</p>
+                        <p className="text-xs text-slate-600 dark:text-slate-400">Last sold: {cardData.prices.ebay.lastSold}</p>
                         <p className="text-xs text-blue-600 font-medium">Volume: {cardData.prices.ebay.volume}</p>
                       </div>
 
@@ -625,8 +625,8 @@ const MarketPage: React.FC<MarketPageProps> = ({
                       </div>
                     </div>
 
-                    <div className="mt-4 p-3 bg-slate-50 rounded-lg">
-                      <p className="text-sm text-slate-600">
+                    <div className="mt-4 p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
+                      <p className="text-sm text-slate-600 dark:text-slate-300">
                         <strong>Recommended:</strong> List on eBay for highest visibility and TCGplayer for trading card collectors. 
                         Consider Cardmarket for European buyers and PriceCharting for market trend analysis.
                       </p>
@@ -639,11 +639,11 @@ const MarketPage: React.FC<MarketPageProps> = ({
             {/* Selling Tips */}
             <Card>
               <div className="p-6">
-                <h3 className="text-lg font-semibold text-slate-900 mb-4">Selling Tips & Best Practices</h3>
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Selling Tips & Best Practices</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-medium text-slate-900 mb-2">📱 US Online Marketplaces</h4>
-                    <ul className="text-sm text-slate-600 space-y-1">
+                    <h4 className="font-medium text-slate-900 dark:text-white mb-2">📱 US Online Marketplaces</h4>
+                    <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-1">
                       <li>• <strong>eBay:</strong> Largest audience, auction & buy-it-now options</li>
                       <li>• <strong>TCGplayer:</strong> Specialized TCG marketplace, lower fees</li>
                       <li>• <strong>Mercari:</strong> Easy selling, built-in shipping labels</li>
@@ -651,8 +651,8 @@ const MarketPage: React.FC<MarketPageProps> = ({
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-medium text-slate-900 mb-2">🌍 International Options</h4>
-                    <ul className="text-sm text-slate-600 space-y-1">
+                    <h4 className="font-medium text-slate-900 dark:text-white mb-2">🌍 International Options</h4>
+                    <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-1">
                       <li>• <strong>Cardmarket (EU):</strong> Europe's largest TCG marketplace</li>
                       <li>• <strong>Yahoo Auctions (Japan):</strong> Access to Japanese collectors</li>
                       <li>• <strong>COMC:</strong> Consignment service with global reach</li>

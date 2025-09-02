@@ -16,7 +16,7 @@ const PricingSection: React.FC<PricingSectionProps> = ({ onUpgradeClick }) => {
             Choose your plan
           </h2>
           <p className="text-xl text-slate-600 dark:text-slate-300">
-            Get started for free or unlock unlimited grading with Pro
+             Get 2 free credits when you get a start plan of 8 credits(total 10 for first month), for new members only. You can add credits and pay-as-you-go, or unlock unlimited grading with the pro collection plan
           </p>
         </div>
 
@@ -24,15 +24,15 @@ const PricingSection: React.FC<PricingSectionProps> = ({ onUpgradeClick }) => {
           {/* Free Plan */}
           <div className="bg-slate-50 dark:bg-slate-800 rounded-3xl p-8 border-2 border-slate-200 dark:border-slate-700 transition-colors">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Free</h3>
-              <div className="text-5xl font-bold text-slate-900 dark:text-white mb-2">$0</div>
-              <p className="text-slate-600 dark:text-slate-400">Perfect for trying out PokeGrade AI</p>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Starter</h3>
+              <div className="text-5xl font-bold text-slate-900 dark:text-white mb-2">$3</div>
+              <p className="text-slate-600 dark:text-slate-400">+ 2 free credits(10 credits total) per month</p>
             </div>
             
             <ul className="space-y-4 mb-8">
               <li className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                <span className="text-slate-700 dark:text-slate-300">5 free card grades per month</span>
+                <span className="text-slate-700 dark:text-slate-300">8 credit grades per month</span>
               </li>
               <li className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
@@ -40,16 +40,16 @@ const PricingSection: React.FC<PricingSectionProps> = ({ onUpgradeClick }) => {
               </li>
               <li className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                <span className="text-slate-700 dark:text-slate-300">Card collection storage</span>
+                <span className="text-slate-700 dark:text-slate-300">Pay-as-you-go booster credits</span>
               </li>
               <li className="flex items-center gap-3">
                 <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                <span className="text-slate-700 dark:text-slate-300">Standard support</span>
+                <span className="text-slate-700 dark:text-slate-300">Customer support</span>
               </li>
             </ul>
 
             <button className="w-full bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 px-6 py-3 rounded-2xl font-semibold transition-all duration-200">
-              Current Plan
+              Get Started
             </button>
           </div>
 

@@ -1,21 +1,26 @@
 import React from 'react';
 import masterballIcon from '../../assets/masterball.svg';
+import type { ViewType } from '../../types';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  setCurrentView: (view: ViewType) => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ setCurrentView }) => {
   return (
     <footer className="py-16 dark:bg-slate-900 dark:text-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-r from-blue-100 to-cyan-100 rounded-xl flex items-center justify-center shadow-lg shadow-cyan-400/25 p-1">
+                <div className="w-10 h-10 bg-gradient-to- rounded-xl flex items-center justify-center p-1">
                   <img
                     src={masterballIcon}
                     alt="masterball icon"
                     className="w-8 h-8 object-contain"
                   />
                 </div>
-                <span className="text-2xl font-black text-white">PokéGrader.AI</span>
+                <span className="text-xlg font-black text-white">PokéGrader</span>
               </div>
               <p className="text-cyan-100 text-sm mb-6 max-w-md">
                 Professional AI-powered Pokemon card grading with instant results. Get PSA grades for trade price in seconds.
@@ -50,7 +55,7 @@ const Footer: React.FC = () => {
               <ul className="space-y-3 text-sm">
                 <li>
                   <button
-                    onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => setCurrentView('features')}
                     className="text-cyan-100 hover:text-white transition-colors cursor-pointer"
                   >
                     Features
@@ -58,7 +63,7 @@ const Footer: React.FC = () => {
                 </li>
                 <li>
                   <button
-                    onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => setCurrentView('pricing')}
                     className="text-cyan-100 hover:text-white transition-colors cursor-pointer"
                   >
                     Pricing
@@ -111,13 +116,13 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="mb-6">
           <a
-            href="https://buymeacoffee.com/jaynemoon"
+            href="https://buymeacoffee.com/jaynemoon?new=1"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105 dark:text-slate-800 dark:bg-yellow-300"
-            style={{ border: '1px dashed #f76834' }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105 dark:text-slate-800 dark:bg-orange-300"
+            style={{ border: '2px dashed #f76834' }}
           >
-            ☕ Make Jayney a PokéCoffee!
+            ☕ Make Jayney a Pokémon Coffee!
           </a>
         </div>
         <p className="dark:text-slate-400 text-sm">

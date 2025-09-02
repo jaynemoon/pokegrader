@@ -45,7 +45,7 @@ const HomePage: React.FC<HomePageProps> = ({
       <FeaturesSection />
       <PricingSection onUpgradeClick={() => setCurrentView('upgrade')} />
       <NewsletterSection />
-      <Footer />
+      <Footer setCurrentView={setCurrentView} />
     </div>
   );
 };

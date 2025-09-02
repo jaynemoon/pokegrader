@@ -153,10 +153,10 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-8">
           <Card>
             <div className="text-center py-12">
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
                 Sign In Required
               </h2>
-              <p className="text-slate-600 mb-6">
+              <p className="text-slate-600 dark:text-slate-300 mb-6">
                 Please sign in to view your card collection
               </p>
               <Button onClick={() => setCurrentView('auth')}>
@@ -184,8 +184,8 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
         {/* Page Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold dark:text-slate-900 mb-2">My Collection</h1>
-            <p className="dark:text-slate-600">
+            <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">My Collection</h1>
+            <p className="text-slate-600 dark:text-slate-300">
               Manage and track your graded Pokemon cards
             </p>
           </div>
@@ -198,13 +198,13 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
         </div>
 
         {/* View Toggle */}
-        <div className="flex space-x-1 mb-6 bg-slate-200 p-1 rounded-lg w-fit">
+        <div className="flex space-x-1 mb-6 bg-slate-200 dark:bg-slate-700 p-1 rounded-lg w-fit">
           <button
             onClick={() => setActiveView('grid')}
             className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
               activeView === 'grid'
-                ? 'dark:bg-white dark:text-slate-900 shadow-sm'
-                : 'dark:text-slate-600 dark:hover:text-slate-900'
+                ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm'
+                : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             Collection
@@ -213,8 +213,8 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
             onClick={() => setActiveView('analytics')}
             className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
               activeView === 'analytics'
-                ? 'bg-white text-slate-900 shadow-sm'
-                : 'text-slate-600 hover:text-slate-900'
+                ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm'
+                : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             Analytics
@@ -223,8 +223,8 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
             onClick={() => setActiveView('wishlist')}
             className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
               activeView === 'wishlist'
-                ? 'bg-white text-slate-900 shadow-sm'
-                : 'text-slate-600 hover:text-slate-900'
+                ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm'
+                : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             Wishlist
@@ -238,8 +238,8 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
             {/* Wishlist Header */}
             <div className="flex justify-between items-center mb-8">
               <div>
-                <h2 className="text-2xl font-bold text-slate-900">Wishlist</h2>
-                <p className="text-slate-600">Track Pokemon cards you want to acquire</p>
+                <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Wishlist</h2>
+                <p className="text-slate-600 dark:text-slate-300">Track Pokemon cards you want to acquire</p>
               </div>
               
               <Button
@@ -254,11 +254,11 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
             {showAddForm && (
               <Card className="mb-6">
                 <div className="p-6">
-                  <h3 className="text-lg font-semibold text-slate-900 mb-4">Add New Wishlist Item</h3>
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Add New Wishlist Item</h3>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-1">
+                      <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                         Card Name *
                       </label>
                       <Input
@@ -270,7 +270,7 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-1">
+                      <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                         Set
                       </label>
                       <Input
@@ -282,7 +282,7 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-1">
+                      <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                         Target Grade
                       </label>
                       <Input
@@ -296,7 +296,7 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-1">
+                      <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                         Max Price ($)
                       </label>
                       <Input
@@ -310,11 +310,11 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
                   </div>
 
                   <div className="mb-4">
-                    <label className="block text-sm font-medium text-slate-700 mb-1">
+                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                       Priority
                     </label>
                     <select
-                      className="px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="px-3 py-2 border border-slate-300 dark:border-slate-600 dark:bg-slate-800 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       value={newWishlistItem.priority}
                       onChange={(e) => setNewWishlistItem({ ...newWishlistItem, priority: e.target.value as 'low' | 'medium' | 'high' })}
                     >
@@ -343,7 +343,7 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
             {wishlist.length === 0 ? (
               <Card>
                 <div className="p-8 text-center">
-                  <p className="text-slate-600 mb-4">Your wishlist is empty</p>
+                  <p className="text-slate-600 dark:text-slate-300 mb-4">Your wishlist is empty</p>
                   <Button
                     onClick={() => setShowAddForm(true)}
                     variant="primary"
@@ -358,17 +358,17 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
                   <Card key={item.id}>
                     <div className="p-6">
                       <div className="flex justify-between items-start mb-3">
-                        <h3 className="font-semibold text-slate-900">{item.cardName}</h3>
+                        <h3 className="font-semibold text-slate-900 dark:text-white">{item.cardName}</h3>
                         <span className={`px-2 py-1 rounded-md text-xs font-medium border ${getPriorityColor(item.priority)}`}>
                           {item.priority}
                         </span>
                       </div>
 
                       {item.set && (
-                        <p className="text-slate-600 text-sm mb-2">Set: {item.set}</p>
+                        <p className="text-slate-600 dark:text-slate-300 text-sm mb-2">Set: {item.set}</p>
                       )}
 
-                      <div className="space-y-1 text-sm text-slate-600">
+                      <div className="space-y-1 text-sm text-slate-600 dark:text-slate-300">
                         {item.targetGrade && (
                           <p>Target Grade: {item.targetGrade}</p>
                         )}
@@ -416,7 +416,7 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
             {/* Results Count */}
             {filteredAndSortedCards.length !== savedCards.length && (
               <div className="mb-4">
-                <p className="text-slate-600">
+                <p className="text-slate-600 dark:text-slate-300">
                   Showing {filteredAndSortedCards.length} of {savedCards.length} cards
                 </p>
               </div>

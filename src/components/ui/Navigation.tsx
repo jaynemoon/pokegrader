@@ -82,6 +82,23 @@ const Navigation: React.FC<NavigationProps> = ({
               </button>
             )}
             
+            {!user && (
+              <>
+                <button
+                  onClick={() => setCurrentView('features')}
+                  className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-700 rounded-xl hover:border-slate-300 dark:hover:border-slate-600"
+                >
+                  Features
+                </button>
+                <button
+                  onClick={() => setCurrentView('pricing')}
+                  className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-700 rounded-xl hover:border-slate-300 dark:hover:border-slate-600"
+                >
+                  Pricing
+                </button>
+              </>
+            )}
+            
             {user ? (
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-2">
@@ -177,12 +194,26 @@ const Navigation: React.FC<NavigationProps> = ({
                   )}
                 </>
               ) : (
-                <button
-                  onClick={() => { setCurrentView('auth'); setIsMobileMenuOpen(false); }}
-                  className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg shadow-md"
-                >
-                  Sign In
-                </button>
+                <>
+                  <button
+                    onClick={() => { setCurrentView('features'); setIsMobileMenuOpen(false); }}
+                    className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg"
+                  >
+                    Features
+                  </button>
+                  <button
+                    onClick={() => { setCurrentView('pricing'); setIsMobileMenuOpen(false); }}
+                    className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg"
+                  >
+                    Pricing
+                  </button>
+                  <button
+                    onClick={() => { setCurrentView('auth'); setIsMobileMenuOpen(false); }}
+                    className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg shadow-md"
+                  >
+                    Sign In
+                  </button>
+                </>
               )}
 
             </div>

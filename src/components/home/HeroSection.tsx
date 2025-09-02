@@ -46,7 +46,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
         {/* Live Counter Section */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-full">
+          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white px-6 py-3 rounded-full">
             <Zap className="w-5 h-5 animate-pulse" />
             <div className="flex items-center gap-2">
               <span className="text-sm font-medium">Pokemon Cards Graded:</span>
