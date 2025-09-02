@@ -106,7 +106,6 @@ const PricingSection: React.FC<PricingSectionProps> = ({ onUpgradeClick }) => {
 
         <div className="text-center mt-12">
           <p className="text-slate-600 dark:text-slate-400 text-sm">
-            All plans include secure cloud storage and mobile app access
           </p>
         </div>
       </div>

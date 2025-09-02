@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus } from 'lucide-react';
+import { Upload } from 'lucide-react';
 import Navigation from '../ui/Navigation';
 import DottedBackground from '../ui/DottedBackground';
 import CollectionStats from './CollectionStats';
@@ -20,6 +20,8 @@ interface CollectionPageProps {
   handleSignOut: () => void;
   wishlist: WishlistItem[];
   setWishlist: (wishlist: WishlistItem[]) => void;
+  fileInputRef: React.RefObject<HTMLInputElement | null>;
+  handleFileUpload: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const CollectionPage: React.FC<CollectionPageProps> = ({
@@ -29,7 +31,9 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
   setCurrentView,
   handleSignOut,
   wishlist,
-  setWishlist
+  setWishlist,
+  fileInputRef,
+  handleFileUpload
 }) => {
   const [activeView, setActiveView] = useState<'grid' | 'analytics' | 'wishlist'>('grid');
   const [filter, setFilter] = useState<FilterType>({});
@@ -186,9 +190,9 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
             </p>
           </div>
           <div className="flex space-x-3">
-            <Button onClick={() => setCurrentView('home')}>
-              <Plus className="w-4 h-4 mr-2" />
-              Add New Card
+            <Button onClick={() => fileInputRef.current?.click()}>
+              <Upload className="w-4 h-4 mr-2" />
+              Upload Card
             </Button>
           </div>
         </div>
@@ -429,6 +433,15 @@ const CollectionPage: React.FC<CollectionPageProps> = ({
           </>
         )}
       </div>
+
+      {/* Hidden file input */}
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/*"
+        onChange={handleFileUpload}
+        className="hidden"
+      />
     </div>
   );
 };

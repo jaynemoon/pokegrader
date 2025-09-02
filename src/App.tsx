@@ -11,6 +11,7 @@ import BarcodeScanner from './components/mobile/BarcodeScanner';
 import { generateMockPriceData } from './utils/mockData';
 // Import to force dark mode classes inclusion
 import { DarkModeClasses } from './components/ui/DarkModeClasses';
+import pikachuFirstImage from './assets/pikachu-first.png';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewType>('home');
@@ -113,10 +114,10 @@ const App: React.FC = () => {
       setSavedCards([
         {
           id: 1,
-          cardName: "Pikachu VMAX",
-          overallGrade: 9,
+          cardName: "Pikachu Base Set Shadowless 1st Edition",
+          overallGrade: 10,
           estimatedValue: 450,
-          image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='280' fill='%23FFD700'%3E%3Crect width='200' height='280' rx='12' fill='%23000'/%3E%3Crect x='8' y='8' width='184' height='264' rx='8' fill='%23FFD700'/%3E%3Ctext x='100' y='140' text-anchor='middle' fill='%23000' font-size='16' font-weight='bold'%3EPikachu VMAX%3C/text%3E%3C/svg%3E",
+          image: pikachuFirstImage,
           dateSaved: "12/15/2024",
           breakdown: {
             centering: { score: 9, description: "Excellent" },

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { History, Crown, TrendingUp, Scan, Menu, X } from 'lucide-react';
+import { Crown, TrendingUp, Scan, Menu, X, DollarSign } from 'lucide-react';
 import masterballIcon from '../../assets/masterball.svg';
+import packIcon from '../../assets/pack.png';
 import ThemeToggle from './ThemeToggle';
 import type { User, SavedCard, ViewType } from '../../types';
 
@@ -45,18 +46,18 @@ const Navigation: React.FC<NavigationProps> = ({
               <>
                 <button
                   onClick={() => setCurrentView('collection')}
-                  className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-700 rounded-xl hover:border-slate-300 dark:hover:border-slate-600"
+                  className="inline-flex items-center gap-0.5 px-3 p-1 m-1 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-700 rounded-xl hover:border-slate-300 dark:hover:border-slate-600"
                 >
-                  <History className="w-4 h-4" />
+                  <img src={packIcon} alt="Collection" className="w-8 h-8" />
                   Collection ({savedCards.length})
                 </button>
                 
                 <button
                   onClick={() => setCurrentView('market')}
-                  className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-700 rounded-xl hover:border-slate-300 dark:hover:border-slate-600"
+                  className="inline-flex items-center gap-1.5 px-3 p-2.5 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-700 rounded-xl hover:border-slate-300 dark:hover:border-slate-600"
                 >
-                  <TrendingUp className="w-4 h-4" />
-                  Market
+                  <DollarSign className="w-4 h-4" />
+                  Marketplace
                 </button>
                 
                 {setShowBarcodeScanner && (
@@ -143,7 +144,7 @@ const Navigation: React.FC<NavigationProps> = ({
                     onClick={() => { setCurrentView('collection'); setIsMobileMenuOpen(false); }}
                     className="flex items-center gap-2 w-full px-3 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg"
                   >
-                    <History className="w-4 h-4" />
+                    <img src={packIcon} alt="Collection" className="w-4 h-4" />
                     Collection ({savedCards.length})
                   </button>
                   
