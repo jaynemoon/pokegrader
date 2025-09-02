@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ArrowLeft, Crown, Star, Zap, Shield, Download, Headphones } from 'lucide-react';
 import Navigation from '../ui/Navigation';
 import DottedBackground from '../ui/DottedBackground';
@@ -11,17 +11,14 @@ interface UpgradePageProps {
   savedCards: SavedCard[];
   setCurrentView: (view: ViewType) => void;
   handleSignOut: () => void;
-  onUpgrade: () => void;
 }
 
 const UpgradePage: React.FC<UpgradePageProps> = ({
   user,
   savedCards,
   setCurrentView,
-  handleSignOut,
-  onUpgrade
+  handleSignOut
 }) => {
-  const [isProcessing, setIsProcessing] = useState(false);
 
 
   const freeFeatures = [

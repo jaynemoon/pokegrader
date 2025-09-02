@@ -9,15 +9,13 @@ interface PricingPageProps {
   savedCards: SavedCard[];
   setCurrentView: (view: ViewType) => void;
   handleSignOut: () => void;
-  onUpgrade: () => void;
 }
 
 const PricingPage: React.FC<PricingPageProps> = ({
   user,
   savedCards,
   setCurrentView,
-  handleSignOut,
-  onUpgrade
+  handleSignOut
 }) => {
   const starterFeatures = [
     '8 credit grades per month',
