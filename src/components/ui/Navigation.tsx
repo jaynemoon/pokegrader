@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Crown, Scan, Menu, X, DollarSign } from 'lucide-react';
 import masterballIcon from '../../assets/masterball.svg';
+import pikaCoin from '../../assets/pika-coin.png';
 import packIcon from '../../assets/pack.png';
 import ThemeToggle from './ThemeToggle';
 import type { User, SavedCard, ViewType } from '../../types';
@@ -46,7 +47,7 @@ const Navigation: React.FC<NavigationProps> = ({
               <>
                 <button
                   onClick={() => setCurrentView('collection')}
-                  className="inline-flex items-center gap-0.5 px-3 p-1 m-1 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-700 rounded-xl hover:border-slate-300 dark:hover:border-slate-600"
+                  className="inline-flex items-center gap-0.5 px-3 p-1 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-700 rounded-xl hover:border-slate-300 dark:hover:border-slate-600"
                 >
                   <img src={packIcon} alt="Collection" className="w-8 h-8" />
                   Collection ({savedCards.length})
@@ -56,7 +57,11 @@ const Navigation: React.FC<NavigationProps> = ({
                   onClick={() => setCurrentView('market')}
                   className="inline-flex items-center gap-1.5 px-3 p-2.5 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 transition-colors border border-slate-200 dark:border-slate-700 rounded-xl hover:border-slate-300 dark:hover:border-slate-600"
                 >
-                  <DollarSign className="w-4 h-4" />
+                  <img
+                    src={pikaCoin}
+                    alt="PokéGrader-icon"
+                    className="w-4 h-4"
+                  />
                   Marketplace
                 </button>
                 
