@@ -69,16 +69,16 @@ const PricingSection: React.FC<PricingSectionProps> = ({ setCurrentView }) => {
           </div>
 
           {/* Pro Plan */}
-          <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-3xl p-8 border-2 border-purple-200 dark:border-purple-700 relative transition-colors flex flex-col h-full">
+          <div className="bg-gradient-to-br from-rose-400/10 to-pink-100/10 dark:from-rose-900/20 dark:to-rose-900/20 rounded-3xl p-8 border-2 border-pink-600 dark:border-red-400 relative transition-colors flex flex-col h-full">
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-              <span className="bg-gradient-to-r from-purple-600 to-pink-400 dark:from-purple-500 dark:to-pink-500 text-white px-4 py-1 rounded-full text-sm font-medium">
+              <span className="bg-gradient-to-r from-rose-400 to-orange-500 dark:from-rose-400 dark:to-orange-500 text-white px-4 py-1 rounded-full text-sm font-medium">
                 Most Popular
               </span>
             </div>
             
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Pro Collection</h3>
-              <div className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent mb-2">
+              <div className="text-5xl font-bold bg-gradient-to-r from-rose-600 to-red-400 dark:from-red-400 dark:to-red-400 bg-clip-text text-transparent mb-2">
                 $20
               </div>
               <p className="text-slate-600 dark:text-slate-400">per month</p>
@@ -86,23 +86,23 @@ const PricingSection: React.FC<PricingSectionProps> = ({ setCurrentView }) => {
             
             <ul className="space-y-4 mb-8 flex-grow">
               <li className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-purple-500 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-rose-500 flex-shrink-0" />
                 <span className="text-slate-700 dark:text-slate-300 font-medium">Unlimited card grades</span>
               </li>
               <li className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-purple-500 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-rose-500 flex-shrink-0" />
                 <span className="text-slate-700 dark:text-slate-300">Advanced market analytics</span>
               </li>
               <li className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-purple-500 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-rose-500 flex-shrink-0" />
                 <span className="text-slate-700 dark:text-slate-300">Priority AI processing</span>
               </li>
               <li className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-purple-500 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-rose-500 flex-shrink-0" />
                 <span className="text-slate-700 dark:text-slate-300">Export collection reports</span>
               </li>
               <li className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-purple-500 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-rose-500 flex-shrink-0" />
                 <span className="text-slate-700 dark:text-slate-300">Premium support</span>
               </li>
             </ul>
@@ -110,7 +110,7 @@ const PricingSection: React.FC<PricingSectionProps> = ({ setCurrentView }) => {
             <div className="mt-auto">
               <button 
                 onClick={() => setCurrentView('auth')}
-                className="w-full bg-gradient-to-r from-rose-600/50 to-pink-500 dark:from-rose-500 dark:to-pink-500 hover:from-rose-400 hover:to-pink-700 dark:hover:from-rose-600 dark:hover:to-pink-500 text-white px-6 py-3 rounded-2xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-103"
+                className="w-full bg-gradient-to-r from-rose-500 to-red-400 dark:from-rose-400 dark:to-red-400 hover:from-rose-500 hover:to-rose-600 dark:hover:from-rose-500 dark:hover:to-rose-400 text-white px-6 py-3 rounded-2xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-100"
               >
                 Upgrade to Pro
               </button>

@@ -16,7 +16,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   const { cards, loading, error } = usePokemonCards(4);
   return (
     <section className="relative">
-      <PatternBackground pattern="dots"opacity={0.1} />
+      <PatternBackground pattern="dots" opacity={0.1} />
       <div className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
         <div className="text-center max-w-4xl mx-auto">
         {/* Pikachu Image */}
@@ -34,7 +34,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         </div>
         
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-          <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 dark:from-blue-400 dark:via-purple-400 dark:to-cyan-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-indigo-500 via-rose-500 to-red-400 dark:from-indigo-400 dark:via-rose-500 dark:to-red-200 bg-clip-text text-transparent">
              Top-tier Pokemon TCG Grading Tool
           </span>
         </h1>
