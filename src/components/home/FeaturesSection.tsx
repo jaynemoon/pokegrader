@@ -40,11 +40,11 @@ const FeaturesSection: React.FC = () => {
   const features = [
     {
       icon: Shield,
-      title: "AI Pokemon Card Analysis",
+      title: "Advanced AI Grading",
       description: "Professional PSA-style grading specifically trained on Pokemon TCG cards, analyzing centering, corners, edges, and surface condition with 99.2% accuracy.",
       badge: "Trained on 800K+ Pokemon cards",
       color: "from-blue-500 to-cyan-500",
-      badgeColor: "text-blue-600 dark:text-blue-400",
+      badgeColor: "text-yellow-600 dark:text-yellow-400",
       visualization: () => {
         const currentCard = pokemonCards[animationStep % pokemonCards.length];
         return (
@@ -126,105 +126,9 @@ const FeaturesSection: React.FC = () => {
         );
       }
     },
-    {
-      icon: DollarSign,
-      title: "Pokemon TCG Market Pricing",
-      description: "Real-time pricing data from major Pokemon card marketplaces including eBay, PWCC, and Heritage Auctions with set-specific analytics.",
-      badge: "Live Pokemon market data",
-      color: "from-emerald-500 to-teal-500",
-      badgeColor: "text-emerald-600 dark:text-emerald-400",
-      visualization: () => {
-        const priceData = [2800, 3200, 2900, 3400, 3600, 3800, 3847];
-        const maxPrice = Math.max(...priceData);
-        const minPrice = Math.min(...priceData);
-        
-        return (
-          <div className="relative h-48 bg-gradient-to-br from-emerald-50 via-green-50 to-teal-100 rounded-xl p-4 mb-6 overflow-hidden">
-            {/* Background elements */}
-            <div className="absolute inset-0 opacity-5">
-              <div className="absolute top-4 right-4 text-6xl">💰</div>
-              <div className="absolute bottom-2 left-2 text-4xl">📈</div>
-            </div>
-            
-            {/* Price header */}
-            <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-lg p-3 mb-4 shadow-md">
-              <div className="flex items-center justify-between mb-2">
-                <div className="text-sm font-bold dark:text-slate-800">Charizard Base Set PSA 10</div>
-                <div className="flex items-center bg-gradient-to-r from-emerald-500 to-green-500 text-white px-2 py-1 rounded-full">
-                  <TrendingUp className="w-3 h-3 mr-1" />
-                  <span className="text-xs font-bold">+24.3%</span>
-                </div>
-              </div>
-              
-              <div className="flex items-baseline space-x-2">
-                <div className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
-                  $3,847
-                </div>
-                <div className="text-sm text-slate-500 line-through">$3,100</div>
-                <div className="px-2 py-1 bg-emerald-100 text-emerald-700 text-xs rounded-full font-medium">
-                  Live
-                </div>
-              </div>
-            </div>
-            
-            {/* Market stats cards */}
-            <div className="grid grid-cols-3 gap-2 mb-3">
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-2 text-center">
-                <div className="text-lg font-bold text-emerald-600">147</div>
-                <div className="text-xs text-slate-600">30d Sales</div>
-              </div>
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-2 text-center">
-                <div className="text-lg font-bold text-blue-600">$3.2K</div>
-                <div className="text-xs text-slate-600">Avg Sale</div>
-              </div>
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-2 text-center">
-                <div className="text-lg font-bold text-purple-600">92%</div>
-                <div className="text-xs text-slate-600">Accuracy</div>
-              </div>
-            </div>
-            
-            {/* Enhanced price chart */}
-            <div className="relative bg-white/60 backdrop-blur-sm rounded-lg p-3">
-              <div className="text-xs font-medium text-slate-700 mb-2">30-Day Price Trend</div>
-              <div className="relative h-12 flex items-end justify-between">
-                {priceData.map((price, idx) => {
-                  const height = ((price - minPrice) / (maxPrice - minPrice)) * 100;
-                  const isHighest = price === maxPrice;
-                  return (
-                    <div key={idx} className="flex flex-col items-center space-y-1">
-                      <div 
-                        className={`w-4 rounded-t-sm transition-all duration-1000 ease-out ${
-                          isHighest 
-                            ? 'bg-gradient-to-t from-emerald-500 to-green-400 shadow-lg' 
-                            : 'bg-gradient-to-t from-emerald-400 to-emerald-300'
-                        }`}
-                        style={{ 
-                          height: `${Math.max(height, 10)}%`,
-                          animationDelay: `${idx * 200}ms`
-                        }}
-                      />
-                      {isHighest && (
-                        <div className="text-xs font-bold text-emerald-600 dark:text-emerald-400">
-                          ${(price/1000).toFixed(1)}K
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-              
-              <div className="flex justify-between text-xs text-slate-500 dark:text-slate-400 mt-1">
-                <span>30d</span>
-                <span>Today</span>
-              </div>
-            </div>
-          </div>
-        );
-      }
-    },
-    {
+        {
       icon: BarChart3,
-      title: "Pokemon Set Analytics",
+      title: "Data & Analytics",
       description: "Comprehensive market insights across all Pokemon TCG sets with rarity analysis, grade distribution, and investment tracking for collectors.",
       badge: "Complete Pokemon TCG database",
       color: "from-purple-500 to-violet-500",
@@ -329,7 +233,103 @@ const FeaturesSection: React.FC = () => {
           </div>
         );
       }
-    }
+    },
+    {
+      icon: DollarSign,
+      title: "Market Pricing",
+      description: "Real-time pricing data from major Pokemon card marketplaces including eBay, PWCC, and Heritage Auctions with set-specific analytics.",
+      badge: "Live Pokemon market data",
+      color: "from-emerald-500 to-teal-500",
+      badgeColor: "text-emerald-600 dark:text-emerald-400",
+      visualization: () => {
+        const priceData = [2800, 3200, 2900, 3400, 3600, 3800, 3847];
+        const maxPrice = Math.max(...priceData);
+        const minPrice = Math.min(...priceData);
+        
+        return (
+          <div className="relative h-48 bg-gradient-to-br from-emerald-50 via-green-50 to-teal-100 rounded-xl p-4 mb-6 overflow-hidden">
+            {/* Background elements */}
+            <div className="absolute inset-0 opacity-5">
+              <div className="absolute top-4 right-4 text-6xl">💰</div>
+              <div className="absolute bottom-2 left-2 text-4xl">📈</div>
+            </div>
+            
+            {/* Price header */}
+            <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-lg p-3 mb-4 shadow-md">
+              <div className="flex items-center justify-between mb-2">
+                <div className="text-sm font-bold dark:text-slate-800">Charizard Base Set PSA 10</div>
+                <div className="flex items-center bg-gradient-to-r from-emerald-500 to-green-500 text-white px-2 py-1 rounded-full">
+                  <TrendingUp className="w-3 h-3 mr-1" />
+                  <span className="text-xs font-bold">+24.3%</span>
+                </div>
+              </div>
+              
+              <div className="flex items-baseline space-x-2">
+                <div className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
+                  $3,847
+                </div>
+                <div className="text-sm text-slate-500 line-through">$3,100</div>
+                <div className="px-2 py-1 bg-emerald-100 text-emerald-700 text-xs rounded-full font-medium">
+                  Live
+                </div>
+              </div>
+            </div>
+            
+            {/* Market stats cards */}
+            <div className="grid grid-cols-3 gap-2 mb-3">
+              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-2 text-center">
+                <div className="text-lg font-bold text-emerald-600">147</div>
+                <div className="text-xs text-slate-600">30d Sales</div>
+              </div>
+              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-2 text-center">
+                <div className="text-lg font-bold text-blue-600">$3.2K</div>
+                <div className="text-xs text-slate-600">Avg Sale</div>
+              </div>
+              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-2 text-center">
+                <div className="text-lg font-bold text-purple-600">92%</div>
+                <div className="text-xs text-slate-600">Accuracy</div>
+              </div>
+            </div>
+            
+            {/* Enhanced price chart */}
+            <div className="relative bg-white/60 backdrop-blur-sm rounded-lg p-3">
+              <div className="text-xs font-medium text-slate-700 mb-2">30-Day Price Trend</div>
+              <div className="relative h-12 flex items-end justify-between">
+                {priceData.map((price, idx) => {
+                  const height = ((price - minPrice) / (maxPrice - minPrice)) * 100;
+                  const isHighest = price === maxPrice;
+                  return (
+                    <div key={idx} className="flex flex-col items-center space-y-1">
+                      <div 
+                        className={`w-4 rounded-t-sm transition-all duration-1000 ease-out ${
+                          isHighest 
+                            ? 'bg-gradient-to-t from-emerald-500 to-green-400 shadow-lg' 
+                            : 'bg-gradient-to-t from-emerald-400 to-emerald-300'
+                        }`}
+                        style={{ 
+                          height: `${Math.max(height, 10)}%`,
+                          animationDelay: `${idx * 200}ms`
+                        }}
+                      />
+                      {isHighest && (
+                        <div className="text-xs font-bold text-emerald-600 dark:text-emerald-400">
+                          ${(price/1000).toFixed(1)}K
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+              
+              <div className="flex justify-between text-xs text-slate-500 dark:text-slate-400 mt-1">
+                <span>30d</span>
+                <span>Today</span>
+              </div>
+            </div>
+          </div>
+        );
+      }
+    },
   ];
 
   return (
@@ -357,7 +357,7 @@ const FeaturesSection: React.FC = () => {
             <div className="text-3xl font-bold text-yellow-500 dark:text-yellow mb-1">
               &lt; 5s
             </div>
-            <div className="text-lg font-bold text-yellow-400 dark:text-yellow-500">Lightning Fast Grading</div>
+            <div className="text-lg font-bold text-yellow-500 dark:text-yellow-500">Lightning Fast Grading</div>
           </div>
           
           <div className="group rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-lg text-center">
