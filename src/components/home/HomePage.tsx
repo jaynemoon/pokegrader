@@ -24,7 +24,6 @@ const HomePage: React.FC<HomePageProps> = ({
   setCurrentView,
   handleSignOut,
   fileInputRef,
-  cameraInputRef,
   handleFileUpload
 }) => {
   return (
@@ -40,7 +39,6 @@ const HomePage: React.FC<HomePageProps> = ({
       
       <HeroSection
         fileInputRef={fileInputRef}
-        cameraInputRef={cameraInputRef}
         handleFileUpload={handleFileUpload}
       />
       

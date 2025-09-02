@@ -1,16 +1,14 @@
 import React from 'react';
-import { Camera, Upload, Zap, RefreshCw } from 'lucide-react';
+import { ArrowBigRightIcon, Zap, RefreshCw } from 'lucide-react';
 import { usePokemonCards } from '../../hooks/usePokemonCards';
 
 interface HeroSectionProps {
   fileInputRef: React.RefObject<HTMLInputElement | null>;
-  cameraInputRef: React.RefObject<HTMLInputElement | null>;
   handleFileUpload: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({
   fileInputRef,
-  cameraInputRef,
   handleFileUpload
 }) => {
   const { cards, loading, error, refreshCards } = usePokemonCards(4);
@@ -35,17 +33,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
           <button
-            onClick={() => cameraInputRef.current?.click()}
+            onClick={() => fileInputRef.current?.click()}
             className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-blue-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-200 shadow-lg shadow-blue-600/25 dark:shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-600/40 dark:hover:shadow-blue-500/40 hover:scale-105"
           >
-            <Camera className="w-5 h-5" />
-            Get Started
-          </button>
-          <button
-            onClick={() => fileInputRef.current?.click()}
-            className="inline-flex items-center gap-3 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-900 dark:text-white px-8 py-4 rounded-2xl font-semibold text-lg border border-slate-200 dark:border-slate-600 transition-all duration-200 shadow-lg shadow-slate-900/5 dark:shadow-slate-100/5 hover:shadow-xl hover:shadow-slate-900/10 dark:hover:shadow-slate-100/10 hover:scale-105"
-          >
-            <Upload className="w-5 h-5" />
+            <ArrowBigRightIcon className="w-5 h-5" />
             Get Started
           </button>
         </div>
@@ -145,14 +136,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         ref={fileInputRef}
         type="file"
         accept="image/*"
-        onChange={handleFileUpload}
-        className="hidden"
-      />
-      <input
-        ref={cameraInputRef}
-        type="file"
-        accept="image/*"
-        capture="environment"
         onChange={handleFileUpload}
         className="hidden"
       />
